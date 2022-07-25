@@ -1,0 +1,17 @@
+{
+  "name": "ssblur-website-simple",
+  "version": "0.1.0",
+  "description": "A simple templated site for ssblur",
+  "main": "index.js",
+  "scripts": {
+    "build": "node .",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Patrick Emery",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.19",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}

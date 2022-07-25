@@ -1,3 +1,5 @@
+include icon.pug
+
 doctype html
 head
   block title
@@ -22,16 +24,16 @@ head
       .links
         .link
           a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-            span.typcn.typcn-social-youtube
+            +icon('social-youtube')
         .link
           a(href='https://www.twitch.tv/ssblur' title='Twitch')
-            span.typcn.typcn-message-typing
+            +icon('message-typing')
         .link
           a(href='https://twitter.com/ssblur' title='Twitter')
-            span.typcn.typcn-social-twitter
+            +icon('social-twitter')
         .link
           a(href='https://github.com/ssblur' title='Github')
-            span.typcn.typcn-social-github
+            +icon('social-github')
 .container
   block content
     p { replace me }

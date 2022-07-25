@@ -4,7 +4,8 @@ const fs = require('fs');
 
 let templateVariables = {}
 let pagesToRender = [
-    'index'
+    'index',
+    'site'
 ]
 
 for(let page of pagesToRender) {

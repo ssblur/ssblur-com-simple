@@ -131,7 +131,7 @@ body {
 }
 
 table.transparency {
-    background-color: #fff3;
+    background-color: #ffd1;
     border: solid 1px #fff;
     text-align: center;
     width: 100%;
@@ -142,7 +142,7 @@ table.transparency td {
 }
 
 table.transparency th {
-    background-color: #fff1;
+    background-color: #ffffff05;
     font-size: 24pt;
 }
 

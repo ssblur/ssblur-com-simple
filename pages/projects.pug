@@ -1,0 +1,68 @@
+extends base.pug
+include project.pug
+
+block title 
+  title What have I done
+
+block content
+  h1 Projects
+  p
+    | Here are some projects I've worked on recently! 
+    | These are not in any particular order, and some are older or were hacked together,
+    | so code quality may be inconsistent.
+
+  .projects
+    +project(
+      "These Two are Enemies", 
+      "https://twitter.com/TwoEnemies", 
+      "https://discord.com/api/oauth2/authorize?client_id=778116699958280192&permissions=2048&scope=bot", 
+      "https://github.com/ssblur/TheseTwoAreEnemies"
+    )
+      | A Twitter and Discord bot created to answer a question: 
+      | Who is this character's enemy?
+      | Allows you to search for a character's enemies on Discord, or posts about characters and their 
+      | enemies periodically on Twitter.
+      br
+      | Formerly ran off the Disney wiki, now uses Nickelodeon by default.
+      | Should work on any Fandom / Wikia wiki with an 'enemies' section on character pages.  
+    +project(
+      "Itty for Tiny Life", 
+      "https://github.com/ssblur/IttyMod",
+      "https://tinylifegame.com/"
+    )
+      | Itty is a mod that adds a familiar looking social media site to the game Tiny Life.
+      | Featured on the Tiny Life homepage! Use the website link below to check out Tiny Life.
+    +project(
+      "Froggy Chair for Tiny Life", 
+      "https://github.com/ssblur/froggy-chair",
+      "https://tinylifegame.com/"
+    )
+      | Froggy Chair is a mod for Tiny Life that adds the eponymous Froggy Chair originally 
+      | included in Animal Crossing, as well as the Lily-Pad Table.
+      br
+      | They are simple, yet functional furniture, with 4 mix-and-matchable color sets.
+    +project(
+      "Search and Destroy",
+      "https://github.com/ssblur/Search-and-Destroy"
+    )
+      | Search and Destroy is a silly Discord bot designed to annoy.
+      | This was made as part of a bet, and as a joke. 
+      | All this bot will do is follow a user through all supported Discord servers, and play a sound 
+      | when the user joins a new channel.
+    +project(
+      "Literally Just Cheap Invisible Armor",
+      "https://github.com/ssblur/LiterallyJustCheapInvisibleArmor",
+      "https://www.curseforge.com/minecraft/mc-mods/literally-just-cheap-invisible-armor"
+    )
+      | What it says on the tin.
+      | Not a marvel of technology by any means, but it is functional.
+      | I didn't even replace the default Fabric README.
+    +project(
+      "LazySpeak",
+      "https://github.com/ssblur/LazySpeak"
+    )
+      | A quick Python module which only exists to simplify TTS.
+      | I created this for use with a Twitch helper, and for that it functions well enough.
+      br
+      | This will simply check for commonly used or default platform-specific TTS drivers,
+      | such as SAPI or say, and use them if present.

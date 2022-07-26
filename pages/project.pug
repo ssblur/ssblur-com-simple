@@ -1,0 +1,25 @@
+include icon.pug
+
+mixin project-link(link)
+    if link.includes('twitter.com')
+        a(href=link, title="Twitter")
+            +icon('social-twitter')
+    else if link.includes('github.com')
+        a(href=link, title="Github")
+            +icon('social-github')
+    else if link.includes('discord.com') || link.includes('discord.gg')
+        a(href=link, title="Github")
+            +icon('message-typing')
+    else
+        a(href=link)
+            +icon('globe-outline')
+
+mixin project(name, ...links)
+    .project
+        p
+            h2= name
+            .project-links
+                each item in links
+                    +project-link(item)
+        .project-content
+            block

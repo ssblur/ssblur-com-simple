@@ -9,7 +9,8 @@ let pagesToRender = [
     'index',
     'site',
     'projects',
-    'transparency'
+    'transparency', 
+    'welcome'
 ]
 
 let files = glob('data/finances/*.csv')

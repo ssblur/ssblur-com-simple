@@ -7,6 +7,11 @@ body {
     background-color: #000;
 }
 
+img.big-logo {
+    width: 100%;
+    height: auto;
+}
+
 .link-container {
     width: 100%;
 }
@@ -61,13 +66,32 @@ body {
     position: relative;
     left: 16.665%;
     text-align: center;
-
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .link {
     flex-grow: 4;
     height: 24px;
+}
+
+.big-link {
+    width: calc(33.33% - 16px);
+    height: auto;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.big-link > span {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24pt;
+}
+
+.big-link:hover {
+    background-color: #fff2;
 }
 
 .small-link {
@@ -154,6 +178,25 @@ table.transparency th {
         text-align: center;
     
         display: flex;
+    }
+
+    .big-link {
+        position: relative;
+        padding-left: 33%;
+        padding-right: 33%;
+        width: 34%;
+    }
+
+    .big-link > span {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50%;
+        font-size: 10vw;
+        padding: 8px;
+        transform: translate(-50%, -50%);
+        background-color: #0009;
     }
 
     .project {

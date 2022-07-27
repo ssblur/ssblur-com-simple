@@ -12,11 +12,16 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: Site artifact
+      - name: ssblur.com artifact
         uses: actions/upload-artifact@v3
         with:
           name: ssblur.com
           path: out/ssblur.com
+      - name: pemery.co artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pemery.co
+          path: out/pemery.co
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}

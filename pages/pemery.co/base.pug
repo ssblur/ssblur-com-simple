@@ -1,0 +1,32 @@
+include ../base/icon.pug
+
+doctype html
+head
+  block title
+    title { replace me }
+  meta(name="viewport" content="width=device-width, initial-scale=1.0")
+  meta(name='description' content='The home of SSBlur')
+  link(href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet')
+  link(rel='icon' href='icon.png')
+  link(rel='stylesheet' href='style/font/typicons.css')
+  link(rel='stylesheet' href='style/base.css')
+  link(rel='stylesheet' href='style/pemery.css')
+.link-container
+  .center
+    a(href='/')
+      img(src='icon.png' alt='Patrick Emery Logo')
+  .links
+    .link
+      a(href='projects.html') Projects
+    .link
+      a(href='site.html') This Site
+    .link.small-link
+      .links
+        .link
+          a(href='https://github.com/ssblur' title='Github')
+            +icon('social-github')
+.container
+  block content
+    p { replace me }
+  br
+  br

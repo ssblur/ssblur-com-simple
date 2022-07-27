@@ -1,10 +1,6 @@
-extends base.pug
-include project.pug
+include project.pug 
 
-block title 
-  title What have I done
-
-block content
+mixin projects()
   h1 Projects
   p
     | Here are some projects I've worked on recently! 

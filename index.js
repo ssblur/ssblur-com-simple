@@ -1,17 +1,14 @@
 // Compile all pages and render them to /out
 const pug = require('pug')
-const fs = require('fs');
-const { sync: glob } = require('glob');
-const argv = require('minimist')(process.argv.slice(2));
+const fs = require('fs')
+const { sync: glob } = require('glob')
+const argv = require('minimist')(process.argv.slice(2))
 
-let templateVariables = {}
-let pagesToRender = [
-    'index',
-    'site',
-    'projects',
-    'transparency', 
-    'welcome'
-]
+fs.rmSync('./out', {recursive: true})
+
+let templateVariables = {
+    name: "Patrick Emery"
+}
 
 let files = glob('data/finances/*.csv')
 let finances = []
@@ -51,11 +48,68 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
 }
 templateVariables.finances = finances.reverse()
 
-for(let page of pagesToRender) {
+function getDirname(filename) {
+    filename = filename.split('/')
+    filename.pop()
+    return filename.join('/')
+}
+
+function copyFilesFrom(from, to, overwrite, filter) {
+    if(!filter)
+        filter = name => true
+    for(let file of glob(`${from}/*`)) {
+        let filename = file.substring(from.length)
+        let dirname = getDirname(filename)
+
+        if(!filter(filename)) continue
+
+        if(fs.statSync(file).isDirectory()) {
+            copyFilesFrom(file, `${to}${filename}`, overwrite)
+        } else if(overwrite || !fs.existsSync(`${to}/${filename}`)) {
+            console.log(`${file} --> ${to}${filename}`)
+            fs.mkdirSync(`${to}${dirname}`, {recursive: true})
+            fs.copyFile(file, `${to}${filename}`, () => {})
+        }
+    }
+}
+
+function compileFilesFrom(dir) {
+    for(let page of glob(`./pages/${dir}/**/*.pug`)) {
+        fs.writeFileSync(
+            `./out/${page}.html`, 
+            pug.compileFile(`./pages/${page}.pug`)(templateVariables)
+        )
+    }
+}
+
+copyFilesFrom('./pages/shared', './out/shared', false, name => !name.endsWith('.pug'))
+
+for(let folder of glob('./pages/*')) {
+    if(folder.endsWith('base') || folder.endsWith('shared')) continue
+    let dirname = folder.substring(7)
+    console.log('copying from ' + folder + ' to ' + `./out/${dirname}`)
+    copyFilesFrom(folder, `./out/${dirname}`, true, name => !name.endsWith('.pug'))
+}
+
+for(let page of glob('./pages/**/*.pug')) {
+    if(page.includes('/base/')) continue
+
+    console.log(page)
+    pageName = page.substring(7, page.length - 4)
+
+    let dir = pageName.split('/')
+    dir.pop()
+    dir = dir.join('/')
+    fs.mkdirSync(`./out${dir}`, {recursive: true})
+
     fs.writeFileSync(
-        `./out/${page}.html`, 
-        pug.compileFile(`./pages/${page}.pug`)(templateVariables)
+        `./out${pageName}.html`, 
+        pug.compileFile(`${page}`)(templateVariables)
     )
+}
+
+for(let site of glob('./out/*')) {
+    copyFilesFrom('./out/shared', site, false)
 }
 
 if(argv.dev) {
@@ -63,11 +117,18 @@ if(argv.dev) {
     const express = require('express')
     const serve = require('express-static')
 
-    const app = express();
-    
-    app.get('/', function(req, res) {
-        res.redirect(`/index.html`);
-    });
-    app.use(serve(__dirname + '/out'))
-    app.listen(8888, () => {})
+    let port = 8888
+    for(let site of glob('out/*')) {
+        if(site.endsWith('shared') || site.endsWith('base')) continue
+        const app = express()
+        
+        app.get('/', function(req, res) {
+            res.redirect(`/index.html`)
+        });
+        app.use(serve(site))
+        app.listen(port, () => {
+            console.log(`Serving site ${site} on port ${port}`)
+        })
+        port++;
+    }
 }

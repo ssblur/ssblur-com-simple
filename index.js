@@ -4,7 +4,9 @@ const fs = require('fs')
 const { sync: glob } = require('glob')
 const argv = require('minimist')(process.argv.slice(2))
 
-fs.rmSync('./out', {recursive: true})
+try {
+    fs.rmSync('./out', {recursive: true})
+} catch (e) {}
 
 let templateVariables = {
     name: "Patrick Emery"

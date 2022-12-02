@@ -9,7 +9,7 @@ try {
 } catch (e) {}
 
 let templateVariables = {
-    name: "Patrick Guyas-King"
+    name: "Patrick Hallbick"
 }
 
 let files = glob('data/finances/*.csv')

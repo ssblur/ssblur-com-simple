@@ -128,8 +128,9 @@ if(argv.dev) {
             res.redirect(`/index.html`)
         });
         app.use(serve(site))
+        let p = port
         app.listen(port, () => {
-            console.log(`Serving site ${site} on port ${port}`)
+            console.log(`Serving site ${site} on port ${p}`)
         })
         port++;
     }

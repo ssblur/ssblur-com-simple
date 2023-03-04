@@ -8,7 +8,7 @@
     "dev": "nodemon index.js --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Patrick Guyas-King",
+  "author": "Patrick Hallbick",
   "license": "ISC",
   "dependencies": {
     "glob": "^8.0.3",

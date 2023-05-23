@@ -71,6 +71,10 @@ img.big-logo {
     justify-content: center;
 }
 
+.links > a {
+    text-decoration: none;
+}
+
 .link {
     flex-grow: 4;
     height: 24px;

@@ -13,27 +13,23 @@ head
 .link-container
   .center
     a(href='/')
-      img(src='icon.png' alt='SSBlur Icon: A crayon sketch of a Slowpoke in a grey hoodie')
+      img(src='icon.png' alt='SSBlur Icon: A rough sketch of a Slowpoke gazing vacantly into the distance')
     .quote blur
   .links
     a(href='questions.html').link Q&amp;A
     a(href='projects.html').link Projects 
     a(href='site.html').link This Site
     a(href='transparency.html').link Transparency
-    .link.small-link
+    .fake-link.small-link
       .links
-        .link
-          a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-            +icon('social-youtube')
-        .link
-          a(href='https://www.twitch.tv/ssblur' title='Twitch')
-            +icon('message-typing')
-        .link
-          a(href='https://ssblur.tumblr.com' title='Tumblr')
-            +icon('social-tumbler')
-        .link
-          a(href='https://github.com/ssblur' title='Github')
-            +icon('social-github')
+        a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube').link
+          +icon('social-youtube')
+        a(href='https://www.twitch.tv/ssblur' title='Twitch').link
+          +icon('message-typing')
+        a(href='https://ssblur.tumblr.com' title='Tumblr').link
+          +icon('social-tumbler')
+        a(href='https://github.com/ssblur' title='Github').link
+          +icon('social-github')
 .container
   block content
     p { replace me }

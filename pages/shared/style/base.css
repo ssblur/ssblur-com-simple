@@ -75,7 +75,7 @@ img.big-logo {
     text-decoration: none;
 }
 
-.link {
+.link, .fake-link {
     flex-grow: 4;
     height: 24px;
 }
@@ -107,11 +107,11 @@ img.big-logo {
     background-color: #fff2;
 }
 
-.link-container > .links > .link {
+.link-container > .links > .link, .link-container > .links > .fake-link {
     border: 1px solid #fff4;
 }
 
-.link > a {
+.link > a, .fake-link > a {
     height: 100%;
     width: 100%;
     font-size: 18px;

@@ -3,7 +3,7 @@ name: Generate Site Artifact
 on: 
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:

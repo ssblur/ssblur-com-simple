@@ -1,6 +1,9 @@
 name: Generate Site Artifact
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -36,3 +39,8 @@ jobs:
           aws_bucket: ${{ secrets.PEMERY_AWS_BUCKET }}
           source_dir: './out/pemery.co'
           destination_dir: ''
+      - uses: bcomnes/deploy-to-neocities@v1
+        with:
+          api_token: ${{ secrets.SSBLUR_NEOCITIES_KEY }}
+          cleanup: true
+          dist_dir: out/ssblur.com

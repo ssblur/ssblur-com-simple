@@ -11,13 +11,15 @@ head
   link(rel='stylesheet' href='style/font/typicons.css')
   link(rel='stylesheet' href='style/base.css')
   link(rel='stylesheet' href='style/pemery.css')
+  | <!--[if IE]>
+  |    <link rel="stylesheet" type="text/css" href="style/ie.css" />
+  |  <![endif]-->
 .link-container
   .center
     a(href='/')
       img(src='icon.png' alt='Patrick Guyas-King Logo')
   .links
     a(href='projects.html').link Projects
-    a(href='site.html').link This Site
     .link.small-links
       .links
         a(href='https://github.com/ssblur' title='Github').small-link

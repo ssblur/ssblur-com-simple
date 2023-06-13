@@ -32,6 +32,37 @@ mixin projects()
     | project I tend to work on.
   .projects
     +project(
+      "This Site",
+      "https://pemery.co",
+      "https://ssblur.com",
+      "https://ssblur.neocities.org"
+    )
+      | This site is a static site simultaneously hosted through AWS' S3 service 
+      | (and routed / cached through CloudFront) and Neocities.
+      br
+      | All pages are generated from templates on build, and are automatically 
+      | deployed to their respective services.
+      br
+      | Designed to be simple and compatible, this website does not use client-side 
+      | JavaScript, and sticks to image formats which are near-universally supported.
+      br
+      | With limited CSS3 use and IE-specific compatibility, it should be usable and 
+      | reasonable on basically any browser, including IE5+, Lynx, and even the DSi browser.
+    +project(
+      "These Two are Enemies", 
+      "https://twitter.com/TwoEnemies", 
+      "https://discord.com/api/oauth2/authorize?client_id=778116699958280192&permissions=2048&scope=bot", 
+      "https://github.com/ssblur/TheseTwoAreEnemies"
+    )
+      | A Twitter and Discord bot created to answer a question: 
+      | Who is this character's enemy?
+      | Allows you to search for a character's enemies on Discord, or posts about characters and their 
+      | enemies periodically on Twitter.
+      br
+      | Formerly ran off the Disney wiki, now uses Nickelodeon by default.
+      | No longer works on most wikis due to Wikia changes, and would 
+      | require paid API access anyways.
+    +project(
       "Redderstone", 
       "https://github.com/ssblur/redderstone",
       "https://www.curseforge.com/minecraft/mc-mods/redderstone",
@@ -45,19 +76,6 @@ mixin projects()
     )
       | A work-in-progress Gradle plugin used to generate Patchouli books 
       | out of documentation written in Markdown.
-    +project(
-      "These Two are Enemies", 
-      "https://twitter.com/TwoEnemies", 
-      "https://discord.com/api/oauth2/authorize?client_id=778116699958280192&permissions=2048&scope=bot", 
-      "https://github.com/ssblur/TheseTwoAreEnemies"
-    )
-      | A Twitter and Discord bot created to answer a question: 
-      | Who is this character's enemy?
-      | Allows you to search for a character's enemies on Discord, or posts about characters and their 
-      | enemies periodically on Twitter.
-      br
-      | Formerly ran off the Disney wiki, now uses Nickelodeon by default.
-      | Should work on any Fandom / Wikia wiki with an 'enemies' section on character pages.  
     +project(
       "Froggy Chair for Tiny Life", 
       "https://github.com/ssblur/froggy-chair",

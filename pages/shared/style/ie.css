@@ -1,0 +1,19 @@
+img {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+}
+
+.quote {
+    display: none;
+}
+
+img.big-logo  {
+    position: relative !important;
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.link {
+    margin-right: 14px;
+}

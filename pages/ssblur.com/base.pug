@@ -10,6 +10,9 @@ head
   link(rel='icon' href='icon.png')
   link(rel='stylesheet' href='style/font/typicons.css')
   link(rel='stylesheet' href='style/base.css')
+  | <!--[if IE]>
+  |   <link rel="stylesheet" type="text/css" href="style/ie.css" />
+  | <![endif]-->
 .link-container
   .center
     a(href='/')
@@ -18,7 +21,6 @@ head
   .links
     a(href='questions.html').link Q&amp;A
     a(href='projects.html').link Projects 
-    a(href='site.html').link This Site
     a(href='transparency.html').link Transparency
     .fake-link.small-links
       .links

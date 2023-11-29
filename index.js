@@ -25,7 +25,7 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
     for(let line of contents.split('\n')) {
         datum = line.split(',')
         x = Number.parseFloat(datum[1])
-        if(Number.isNaN(x)) continue;
+        if(Number.isNaN(x) || x == 0) continue;
         total += x
         data.push([
             datum[0],

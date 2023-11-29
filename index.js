@@ -18,6 +18,7 @@ const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
 })
+let grandTotal = 0
 for(let filename of files) { // All of this is to ensure the latest are at the top when rendering.
     let total = 0
     let contents = fs.readFileSync(filename).toString()
@@ -27,6 +28,7 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
         x = Number.parseFloat(datum[1])
         if(Number.isNaN(x) || x == 0) continue;
         total += x
+        grandTotal += x
         data.push([
             datum[0],
             formatter.format(x),
@@ -50,6 +52,7 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
     ])
 }
 templateVariables.finances = finances.reverse()
+templateVariables.grandTotal = grandTotal
 
 function getDirname(filename) {
     filename = filename.split('/')

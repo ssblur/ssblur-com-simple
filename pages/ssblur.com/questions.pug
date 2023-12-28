@@ -1,4 +1,5 @@
 extends base.pug
+include ../base/links.pug
 
 block title 
   title Q&amp;A
@@ -7,7 +8,7 @@ block content
   h1 Submitting Questions 
   p 
     | If you have questions for me, submit them via email at 
-    a(href='mailto:info@ssblur.com') info@ssblur.com
+    +mail
     |  or through my 
     a(href='https://ssblur.tumblr.com/ask' title='Tumblr')
       +icon('social-tumbler')
@@ -23,17 +24,13 @@ block content
             br
             | Here, I play video games, create mods for games, build bots, and sketch Slowpokes.
             | I&apos;d recommend checking out my 
-            a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-              +icon('social-youtube')
-              | YouTube
+            +youtube
             |  or the 
             a(href="/projects.html" title="Projects") Projects
             |  section if you&apos;re looking for some examples.
             br
             | The 
-            a(href='https://ssblur.tumblr.com' title='Tumblr')
-              +icon('social-tumbler')
-              | Tumblr
+            +tumblr
             |  also exists and accumulates most of the things I post elsewhere, eventually. 
             | Stuff like art, random thoughts, and reblogs of things I find funny end up here too.
       li
@@ -41,7 +38,7 @@ block content
         ul
           li
             | Some of my highlight videos are edited by 
-            a(href='https://ognorr.com/') Denis Afloroaiei
+            a(href='https://keyframers.com/') Denis Afloroaiei's Keyframers
             | , and the rest I edit myself.
             br
             | I have edited all my project videos (so far!). 
@@ -73,27 +70,23 @@ block content
         ul
           li
             | I will announce streams on my 
-            a(href='https://discord.gg/Uwbtmmb' title='Discord')
-              +icon('social-discord')
-              | Discord
+            +discord
             | .
             | I stream many Mondays, Wednesdays, and Fridays after 6:00 PM Eastern Time. 
             | I stream to  
-            a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-              +icon('social-youtube')
-              | YouTube
+            +youtube
             |  mostly, and occasionally to Discord.
       li
         | Q: Can I get my name in your videos?
         ul
           li
-            | Since I am generally supported well enough by sponsors, I don&apos;t have a Patreon and don&apos;t usually encourage subscriptions. 
+            | I generally do thank and interact with regular viewers / commenters so feel free 
+            | to drop by my streams or subscribe at my 
+            +youtube  
+            |  channel. 
             br
-            | I generally do thank and interact with regular viewers / commenters, though, so feel free to drop by my streams or subscribe at 
-            a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-              +icon('social-youtube')
-              | YouTube
-            | .
+            | Sending in mod ideas that get used in a video pretty much guarantees a shout out,
+            | as well.
       li
         | Q: What does the name mean?
         ul

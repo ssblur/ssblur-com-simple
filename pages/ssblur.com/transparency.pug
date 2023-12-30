@@ -4,7 +4,8 @@ block title
   title blur's hemorrhaging money hole
 
 block content
-  h2 I have spent net $
+  - var spentOrEarned = grandTotal > 0 ? "earned" : "spent"
+  h2 I have #{spentOrEarned} $
     =grandTotal * -1
     |  on this channel! 
   p (Your support is appreciated)

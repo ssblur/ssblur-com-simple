@@ -134,7 +134,7 @@ if(argv.dev) {
         app.use(serve(site))
         let p = port
         app.listen(port, () => {
-            console.log(`Serving site ${site} on port ${p}`)
+            console.log(`Serving site ${site} at http://127.0.0.1:${p}`)
         })
         port++;
     }

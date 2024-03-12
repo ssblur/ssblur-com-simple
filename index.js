@@ -52,7 +52,8 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
     ])
 }
 templateVariables.finances = finances.reverse()
-templateVariables.grandTotal = grandTotal
+templateVariables.grandTotal = (grandTotal > 0 ? "earned " : "spent ")
+    + formatter.format(Math.abs(grandTotal))
 
 function getDirname(filename) {
     filename = filename.split('/')

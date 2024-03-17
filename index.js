@@ -80,15 +80,6 @@ function copyFilesFrom(from, to, overwrite, filter) {
     }
 }
 
-function compileFilesFrom(dir) {
-    for(let page of glob(`./pages/${dir}/**/*.pug`)) {
-        fs.writeFileSync(
-            `./out/${page}.html`, 
-            pug.compileFile(`./pages/${page}.pug`)(templateVariables)
-        )
-    }
-}
-
 copyFilesFrom('./pages/shared', './out/shared', false, name => !name.endsWith('.pug'))
 
 for(let folder of glob('./pages/*')) {

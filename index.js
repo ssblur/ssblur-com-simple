@@ -71,7 +71,7 @@ function copyFilesFrom(from, to, overwrite, filter) {
         if(!filter(filename)) continue
 
         if(fs.statSync(file).isDirectory()) {
-            copyFilesFrom(file, `${to}${filename}`, overwrite)
+            copyFilesFrom(file, `${to}${filename}`, overwrite, filter)
         } else if(overwrite || !fs.existsSync(`${to}/${filename}`)) {
             console.log(`${file} --> ${to}${filename}`)
             fs.mkdirSync(`${to}${dirname}`, {recursive: true})

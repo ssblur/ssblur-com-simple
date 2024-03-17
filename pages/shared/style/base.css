@@ -176,6 +176,32 @@ table.transparency th {
     font-size: 24pt;
 }
 
+.video-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.youtube-video {
+    width: 33%;
+    display: block;
+    float: left;
+}
+
+.youtube-video > img {
+    width: 100%;
+    overflow-y: hidden;
+    margin-bottom: calc(-12.5%);
+    margin-top: calc(-12.5%);
+}
+
+.youtube-video > p {
+    text-align: center;
+    font-size: 1.3em;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+
 @media(max-width: 940px) {
     .links {
         width: 100%;

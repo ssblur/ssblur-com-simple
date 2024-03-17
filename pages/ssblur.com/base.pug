@@ -1,35 +1,39 @@
 include ../base/icon.pug
+include ../base/links.pug
+include ../base/icon.pug
 
 doctype html
-head
-  block title
-    title { replace me }
-  meta(name="viewport" content="width=device-width, initial-scale=1.0")
-  meta(name='description' content='The home of SSBlur')
-  link(href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet')
-  link(rel='icon' href='icon.png')
-  link(rel='stylesheet' href='style/font/typicons.css')
-  link(rel='stylesheet' href='style/base.css')
-  | <!--[if IE]>
-  |   <link rel="stylesheet" type="text/css" href="style/ie.css" />
-  | <![endif]-->
-.link-container
-  .center
-    a(href='/')
-      img(src='icon.png' alt='SSBlur Icon: A rough sketch of a Slowpoke gazing vacantly into the distance')
-    .quote blur
-  .links
-    a(href='questions.html').link Q&amp;A
-    a(href='projects.html').link Projects 
-    a(href='contact.html').link Contact
-    .fake-link.small-links
-      .links
-        a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube').link.small-link
-          +icon('social-youtube')
-        a(href='https://ssblur.tumblr.com' title='Tumblr').link.small-link
-          +icon('social-tumbler')
-        a(href='https://github.com/ssblur' title='Github').link.small-link
-          +icon('social-github')
+block head
+  head
+    block title
+      title { replace me }
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name='description' content='The home of SSBlur')
+    base(href="/")
+    link(href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet')
+    link(rel='icon' href='icon.png')
+    link(rel='stylesheet' href='/style/font/typicons.css')
+    link(rel='stylesheet' href='/style/base.css')
+    | <!--[if IE]>
+    |   <link rel="stylesheet" type="text/css" href="/style/ie.css" />
+    | <![endif]-->
+  .link-container
+    .center
+      a(href='/')
+        img(src='/icon.png' alt='SSBlur Icon: A rough sketch of a Slowpoke gazing vacantly into the distance')
+      .quote blur
+    .links
+      a(href='questions.html').link Q&amp;A
+      a(href='projects.html').link Projects 
+      a(href='contact.html').link Contact
+      .fake-link.small-links
+        .links
+          a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube').link.small-link
+            +icon('social-youtube')
+          a(href='https://ssblur.tumblr.com' title='Tumblr').link.small-link
+            +icon('social-tumbler')
+          a(href='https://github.com/ssblur' title='Github').link.small-link
+            +icon('social-github')
 .container
   block content
     p { replace me }

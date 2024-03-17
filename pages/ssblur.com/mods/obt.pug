@@ -1,0 +1,45 @@
+extends base.pug
+
+block title 
+  title One Billion Things: Ideas Come Alive
+  
+block content
+  h1 One Billion Things: Ideas Come Alive
+  p 
+   | One Billion Things is a mod which contains a ton of feature ideas suggested by 
+   | viewers of my channel and participants in the Discord Guild for my mods and 
+   | videos.
+   br
+   | Most every feature which is implemented for these videos is included in one 
+   | mod, and each one can be toggled on and off using gamerules.
+  p Check it out on 
+    +link("GitHub Releases", "https://github.com/ssblur/your-mod-ideas/releases")
+    | , 
+    +link("Modrinth", "https://modrinth.com/mod/one-billion-things/")
+    | , or 
+    +link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/one-billion-things")
+    | .
+  h2 FAQ 
+  h3 Can I get my idea into a video?
+  p I regularly pick suggestions both from the YouTube comments and (mostly) from 
+    | suggestions from provided on the 
+    +discord 
+    | . 
+    | There are a number of factors that determine whether a feature makes it in, 
+    | but I primarily seek out ideas that are simple in concept 
+    | (though not necessarily execution), and which follow a rough theme for a video. 
+    | Also, there are just a ton of ideas to sort through all the time.
+    | Basically, don't worry too much if your idea doesn't make it in, it might end up 
+    | in a video later down the line, and I appreciate the suggestions either way.
+  h3 What is that name?
+  p This is actually explained in the first video, but the mod was originally going to 
+    | be titled "One Billion Mods" as a play on the idea that I'd be making 
+    | "One Billion Mods" in the course of this series.
+    | CurseForge really hated the idea of including "Mods" in the name of the project,
+    | so I came up with a goofy alternative.
+  h2 Videos
+  div.video-container
+    +youtube-video('Making Minecraft Hell', 'A_-NhHjnar4')
+    +youtube-video('I modded your ideas into Minecraft', 'bzXLt6AN6t8')
+    +youtube-video('Your Minecraft feature ideas are evil', 'qhjMipvj00k')
+    +youtube-video('"Borrowing" your Minecraft ideas', 'Nl27Hrxkzec')

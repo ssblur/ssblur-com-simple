@@ -1,0 +1,15 @@
+extends base.pug
+
+block title 
+  title Stream It!
+
+block content
+  h1 Stream It!
+  p Stream It! is software that emulates button panels like the Stream Deck.
+  p This allows you to use any old device with a browser, like phones, tablets, 
+    | or laptops into a button panel.
+    | This allows you to control your stream, play sounds, display images, 
+    | and even launch or control programs without switching windows.
+  h2 Videos
+  div.video-container
+    +youtube-video('I made my own Stream Deck!', 'YH6VmvSnenc')

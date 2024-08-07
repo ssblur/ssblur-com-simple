@@ -166,9 +166,9 @@ img.project-background {
     width: auto;
     position: absolute;
     top: 50%;
-    left: 20px;
+    right: 20px;
     z-index: -1;
-    opacity: 15%;
+    opacity: 35%;
     transform: translateY(-50%);
 }
 

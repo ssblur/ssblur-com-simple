@@ -3,12 +3,38 @@ include icon.pug
 mixin project-link(link)
     +link-icon(link)
 
-mixin project(name, ...links)
+mixin simple-project(name, ...links)
+    +project(name, null, links)
+        block
+
+mixin minecraft-project(name, ...links)
+    +project(name, "/style/images/minecraft.png", links)
+        block
+
+mixin tinylife-project(name, ...links)
+    +project(name, "/style/images/tinylife.png", links)
+        block
+
+mixin js-project(name, ...links)
+    +project(name, "/style/images/javascript.png", links)
+        block
+
+mixin py-project(name, ...links)
+    +project(name, "/style/images/python.png", links)
+        block
+
+mixin java-project(name, ...links)
+    +project(name, "/style/images/java.png", links)
+        block
+
+mixin project(name, background, links)
     .project
         p
             h2= name
             .project-links
                 each item in links
                     +project-link(item)
+        if background 
+            img.project-background(src=background)
         .project-content
             block

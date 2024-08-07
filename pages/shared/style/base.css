@@ -160,6 +160,23 @@ img.big-logo {
     text-decoration: none;
 }
 
+img.project-background {
+    height: 75px;
+    max-height: 90%;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    z-index: -1;
+    opacity: 15%;
+    transform: translateY(-50%);
+}
+
+.project-content {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
 table.transparency {
     background-color: #ffd1;
     border: solid 1px #fff;

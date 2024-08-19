@@ -28,9 +28,14 @@ mixin java-project(name, ...links)
         block
 
 mixin project(name, background, links)
+    - var href = null
+    each item in links
+        if item.includes("ssblur.com")
+            - href = item 
     .project
         p
-            h2= name
+            a(href=href)
+                h2= name
             .project-links
                 each item in links
                     +project-link(item)

@@ -28,16 +28,6 @@ mixin projects()
     )
       | Itty is a mod that adds a familiar looking social media site to the game Tiny Life.
       | Featured on the Tiny Life homepage! Use the website link below to check out Tiny Life.
-    +py-project(
-      "Stream It!", 
-      "https://github.com/ssblur/stream-it",
-      "https://ssblur.com/projects/streamit.html"
-    )
-      | Stream It! is a virtual button panel for use in foley on streams or to manage minor, 
-      | repeatable tasks on a computer through a simple interface.
-      br
-      | It's more or less comparable to Elgato's Stream Deck, but made to be usable without
-      | buying any additional hardware, using just a phone or laptop with a browser.
     +minecraft-project(
       "Alchimiae Magicae", 
       "https://ssblur.com/mods/alchimiae.html",
@@ -48,10 +38,10 @@ mixin projects()
       | Alchimiae Magicae adds a dynamic and intuitive potion brewing system that uses Minecraft's 
       | existing systems but brings brewing into the early game. 
       | Experiment and discover new effects by mixing all sorts of brew!
-    +project(
+    +pico-project(
       "PUZZGRIND!",
-      null,
-      ["https://github.com/ssblur/puzzgrind", "https://ssblur.com/projects/puzzgrind/index.html"]
+      "https://github.com/ssblur/puzzgrind", 
+      "https://ssblur.com/projects/puzzgrind/index.html"
     )
       | PUZZGRIND is a simple pick-and-place puzzle game set in the Railgrind universe! 
       | This was made in the PICO-8 and uses only stock features. 
@@ -61,6 +51,16 @@ mixin projects()
     | These may not be finished or actively maintained, but might give an idea of the kind of 
     | project I tend to work on.
   .projects
+    +py-project(
+      "Stream It!", 
+      "https://github.com/ssblur/stream-it",
+      "https://ssblur.com/projects/streamit.html"
+    )
+      | Stream It! is a virtual button panel for use in foley on streams or to manage minor, 
+      | repeatable tasks on a computer through a simple interface.
+      br
+      | It's more or less comparable to Elgato's Stream Deck, but made to be usable without
+      | buying any additional hardware, using just a phone or laptop with a browser.
     +js-project(
       "This Site",
       "https://phallbick.co",

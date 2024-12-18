@@ -27,6 +27,10 @@ mixin java-project(name, ...links)
     +project(name, "/style/images/java.png", links)
         block
 
+mixin pico-project(name, ...links)
+    +project(name, "/style/images/pico8.png", links)
+        block
+
 mixin project(name, background, links)
     - var href = null
     each item in links

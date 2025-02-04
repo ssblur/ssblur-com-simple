@@ -1,6 +1,16 @@
+@font-face {
+    font-family: 'IBM_BIOS_2y';
+    src: url('/style/font/Web437_IBM_BIOS-2y.woff');
+}
+
 * {
-    font-family: 'Quicksand';
-    color: #fff;
+    font-family: 'IBM_BIOS_2y';
+    color: #ffc928;
+}
+
+a:any-link {
+    text-decoration: none;
+    color: #ffe084
 }
 
 body {
@@ -18,10 +28,9 @@ img.big-logo {
 
 .link-container > .center {
     position: relative;
-    left: 45%;
-    border-radius: 50%;
-    border: 0px solid #fff;
-    width: 10%;
+    left: 2.5%;
+    border: 0px solid #ffc928;
+    width: 100%;
     height: 10%;
     overflow: hidden;
     margin-bottom: 24px;
@@ -43,23 +52,30 @@ img.big-logo {
     font-size: 1.5vw;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     text-align: center;
+    text-decoration: none;
 }
 
-.center > a:hover + .quote {
-    display: none;
+.center {
+    padding-top: 15px;
+    font-size: 36pt;
+}
+
+.center > a {
+    text-decoration: none;
 }
 
 .center > a:hover:after {
-    content: "home";
+    content: "> home";
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: #0006;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
     text-align: center;
-    line-height: 20vh;
-    font-size: 7vh;
+    font-size: 5vh;
+    line-height: 18vh;
 }
 
 .links {
@@ -79,6 +95,11 @@ img.big-logo {
 .link, .fake-link {
     flex-grow: 4;
     height: 24px;
+    padding-top: 3px;
+}
+
+.small-link {
+    padding-top: 0px;
 }
 
 .big-link {
@@ -109,7 +130,7 @@ img.big-logo {
 }
 
 .link-container > .links > .link, .link-container > .links > .fake-link {
-    border: 1px solid #fff4;
+    border: 1px solid #ffc928;
 }
 
 .link > a, .fake-link > a {
@@ -127,8 +148,8 @@ img.big-logo {
     padding-right: 12px;
     overflow-x: hidden;
     width: calc(95% - 40px);
-    border-left: 1px #fff2 solid;
-    border-bottom: 1px #fff2 solid;
+    border-left: 1px #ffc928 solid;
+    border-bottom: 1px #ffc928 solid;
 }
 
 .projects {
@@ -178,8 +199,8 @@ img.project-background {
 }
 
 table.transparency {
-    background-color: #ffd1;
-    border: solid 1px #fff;
+    background-color: #2222;
+    border: solid 1px #ffc928;
     text-align: center;
     width: 100%;
 }
@@ -189,8 +210,16 @@ table.transparency td {
 }
 
 table.transparency th {
-    background-color: #ffffff05;
-    font-size: 24pt;
+    background-color: #2222;
+    font-size: 18pt;
+}
+
+.transparency-party, .transparency-amount {
+    width: 15%;
+}
+
+.transparency-comment {
+    width: 70%;
 }
 
 .video-container {

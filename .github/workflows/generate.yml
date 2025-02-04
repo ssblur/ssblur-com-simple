@@ -16,12 +16,12 @@ jobs:
           npm install
           npm run build
       - name: ssblur.com artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ssblur.com
           path: out/ssblur.com
       - name: pemery.co artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pemery.co
           path: out/pemery.co

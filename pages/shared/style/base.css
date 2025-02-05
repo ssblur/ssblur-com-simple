@@ -1,10 +1,10 @@
 @font-face {
-    font-family: 'IBM_BIOS_2y';
-    src: url('/style/font/Web437_IBM_BIOS-2y.woff');
+    font-family: 'VGA';
+    src: url('/style/font/Web437_IBM_VGA_9x14.woff');
 }
 
 * {
-    font-family: 'IBM_BIOS_2y';
+    font-family: 'VGA';
     color: #ffc928;
 }
 

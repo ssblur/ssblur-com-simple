@@ -25,3 +25,11 @@ mixin link(title, link)
     a(href=link title=title)
         =title
         +link-icon(link)
+
+
+mixin site(title, link, comment)
+    .site
+        a.site-title(href=link title=title)
+            =title
+            span.site-details=`(${link})`
+        .site-comment=comment

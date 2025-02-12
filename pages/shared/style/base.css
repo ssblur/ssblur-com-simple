@@ -248,6 +248,26 @@ table.transparency th {
     margin-bottom: 30px;
 }
 
+.sites {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.site {
+    position: relative;
+    flex-grow: 0;
+    width: calc(33% - 28px);
+    margin: 8px;
+    padding: 6px;
+    background-color: #ffd1;
+}
+
+.site-details {
+    font-size: 0.7em;
+    opacity: 60%;
+    padding-left: 8px;
+}
+
 @media(max-width: 940px) {
     .links {
         width: 100%;
@@ -283,6 +303,10 @@ table.transparency th {
 
     .project {
         width: calc(100% - 28px);
+    }
+
+    .site {
+        min-width: calc(100% - 28px);
     }
 
     .container {

@@ -260,6 +260,20 @@ table.transparency th {
     padding-left: 8px;
 }
 
+.reference {
+    display: block;
+    float: right;
+    text-align: center;
+    margin: 3px;
+    padding: 2px;
+    border: var(--primary) solid 1px;
+}
+
+.thumbnail {
+    width: 150px;
+    height: auto;
+}
+
 @media(max-width: 940px) {
     .links {
         width: 100%;

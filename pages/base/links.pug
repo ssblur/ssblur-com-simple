@@ -33,3 +33,14 @@ mixin site(title, link, comment)
             =title
             span.site-details=`(${link})`
         .site-comment=comment
+
+mixin itch(id, name="")
+    iframe(
+        frameborder="0", 
+        src="https://itch.io/embed/" + id + "?linkback=true&border_width=0&bg_color=050505&fg_color=ffc928&link_color=ffe084&border_color=333333",
+        width="550",
+        height="165"
+    )
+        a(href="https://ssblur.itch.io/" + name) 
+            =name 
+            | by it's blur!

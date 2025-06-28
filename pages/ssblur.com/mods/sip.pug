@@ -1,0 +1,23 @@
+extends base.pug
+
+block title 
+  title Sip of Sarsaparilla
+  
+block content
+  h1 Sip of Sarsaparilla
+  p 
+   | Sip of Sarsaparilla is a mod that brings the wild west to Minecraft! 
+   br
+   | Originally titled "Minecraft: Yellow" (named after the popular Undertale fangame),
+   | I broke it off into its own thing so I could fill it with decorative blocks and features 
+   | I wanted.
+  p Check it out on 
+    +link("GitHub Releases", "https://github.com/ssblur/sip-of-sarsaparilla/releases")
+    | , 
+    +link("Modrinth", "https://modrinth.com/mod/sip-of-sarsaparilly/")
+    | , or 
+    +link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/sip-of-sarsaparilla")
+    | .
+  h2 Videos
+  div.video-container
+    +youtube-video('Sip of Sarsaparilla: Minecraft\'s Wild West', 'W2Gqh4OYtTs')

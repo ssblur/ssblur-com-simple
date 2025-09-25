@@ -1,15 +1,6 @@
 include project.pug 
 
-mixin projects()
-  h1 Projects
-  p
-    | Here are some projects I've worked on recently! 
-    | These are not in any particular order, and some are older or were hacked together,
-    | so code quality may be inconsistent.
-
-  h2 Featured
-  p 
-    | These projects are somewhat actively maintained or were released recently.
+mixin featured()
   .projects
     +minecraft-project(
       "Scriptor Magicae", 
@@ -47,6 +38,17 @@ mixin projects()
       | PUZZGRIND is a simple pick-and-place puzzle game set in the Railgrind universe! 
       | This was made in the PICO-8 and uses only stock features. 
       | You can even use the link above to play it in your browser! Neat!
+
+mixin projects()
+  h1 Projects
+  p
+    | Here are some projects I've worked on recently! 
+    | These are not in any particular order, and some are older or were hacked together,
+    | so code quality may be inconsistent.
+  h2 Featured
+  p 
+    | These projects are somewhat actively maintained or were released recently.
+    +featured()
   h2 Other 
   p 
     | These may not be finished or actively maintained, but might give an idea of the kind of 

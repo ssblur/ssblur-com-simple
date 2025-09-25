@@ -1,4 +1,5 @@
 extends base.pug
+include ../base/projects.pug
 
 block title 
   title it's blur
@@ -48,6 +49,23 @@ block content
     | , you will find information on all money earned directly or indirectly through the platforms noted here,
     | as well as money spent directly on the channels.
     | (more information is available on the page).
+  h1 Videos 
+  p 
+    | I make videos!
+    | At this point in time it's mostly Minecraft modding stuff, but I do ostensibly make all sorts of videos.
+    | Here are a few (hopefulle) recent ones:
+  br
+  div.video-container
+    +youtube-video('Meet ModFest: Toybox', '93ohfS6KoZQ')
+    +youtube-video('New in Box! Miniatures in Minecraft', 'SIU-kULANrA')
+    +youtube-video('Sip of Sarsaparilla', 'W2Gqh4OYtTs')
+  h1 Featured Projects 
+  p
+    | These are some projects I've been working on recently.
+    | You can check out more over in the 
+    a(href='projects.html') Projects 
+    | section of the site.
+  +featured()
   br
   h1 Friends of the Me 
   p 

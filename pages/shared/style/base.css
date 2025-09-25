@@ -4,8 +4,13 @@
 }
 
 :root {
-    --primary: #ffc928;
-    --secondary: #ffe084;
+    color-scheme: light dark;
+    --primary: light-dark(#000000, #ffc928);
+    --secondary: light-dark(#2222ff, #ffe084);
+    --background: light-dark(#dddddd, #000000);
+    --highlight: light-dark(#000000, #dddddd);
+    --transparent-highlight: rgb(from var(--highlight) 100% 100% 100% / 7%);
+    --transparent-shadow: rgb(from var(--background) 100% 100% 100% / 7%);
 }
 
 * {
@@ -19,7 +24,7 @@ a:any-link {
 }
 
 body {
-    background-color: #000;
+    background-color: var(--background);
 }
 
 img.big-logo {
@@ -29,16 +34,16 @@ img.big-logo {
 
 .link-container {
     width: 100%;
-}
 
-.link-container > .center {
-    position: relative;
-    left: 2.5%;
-    border: 0px solid var(--primary);
-    width: 100%;
-    height: 10%;
-    overflow: hidden;
-    margin-bottom: 24px;
+    &> .center {
+        position: relative;
+        left: 2.5%;
+        border: 0px solid var(--primary);
+        width: 100%;
+        height: 10%;
+        overflow: hidden;
+        margin-bottom: 24px;
+    }
 }
 
 .center > * > img {
@@ -55,7 +60,7 @@ img.big-logo {
     top: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.5vw;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: -1px -1px 0 var(--background), 1px -1px 0 var(--background), -1px 1px 0 var(--background), 1px 1px 0 var(--background);
     text-align: center;
     text-decoration: none;
 }
@@ -63,12 +68,11 @@ img.big-logo {
 .center {
     padding-top: 15px;
     font-size: 36pt;
-}
 
-.center > a {
-    text-decoration: none;
+    &> a {
+        text-decoration: none;
+    }
 }
-
 
 .links {
     width: 95%;
@@ -78,16 +82,20 @@ img.big-logo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
 
-.links > a {
-    text-decoration: none;
+    &> a {
+        text-decoration: none;
+    }
 }
 
 .link, .fake-link {
     flex-grow: 4;
     height: 24px;
     padding-top: 3px;
+
+    &:hover {
+        background-color: var(--transparent-highlight);
+    }
 }
 
 .small-link {
@@ -99,26 +107,22 @@ img.big-logo {
     height: auto;
     padding: 8px;
     text-decoration: none;
-}
 
-.big-link > span {
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 1vw;
-}
+    &:hover {
+        background-color: var(--transparent-highlight);
+    }
 
-.big-link:hover {
-    background-color: #fff2;
+    &> span {
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1vw;
+    }
 }
 
 .small-links {
     flex-grow: 2;
     min-width: fit-content;
-}
-
-.link:hover {
-    background-color: #fff2;
 }
 
 .link-container > .links > .link, .link-container > .links > .fake-link {
@@ -133,7 +137,7 @@ img.big-logo {
 }
 
 .container {
-    border-left: 1px solid #fff4;
+    border-left: 1px solid var(--transparent-highlight);
     margin-left: calc(2.5%);
     margin-right: calc(2.5% - 26px);
     padding-left: 12px;
@@ -163,14 +167,14 @@ img.big-logo {
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #0002;
+    background-color: var(--transparent-shadow);
     max-width: 50%;
     overflow: hidden;
     font-size: 18pt;
-}
 
-.project-links > a {
-    text-decoration: none;
+    &> a {
+        text-decoration: none;
+    }
 }
 
 img.project-background {
@@ -191,27 +195,27 @@ img.project-background {
 }
 
 table.transparency {
-    background-color: #2222;
+    background-color: var(--transparent-shadow);
     border: solid 1px var(--primary);
     text-align: center;
     width: 100%;
-}
 
-table.transparency td {
-    border-bottom: solid 1px #fff2;
-}
+    td {
+        border-bottom: solid 1px var(--transparent-highlight);
+    }
 
-table.transparency th {
-    background-color: #2222;
-    font-size: 18pt;
-}
+    th {
+        background-color: var(--transparent-highlight);
+        font-size: 18pt;
+    }
 
-.transparency-party, .transparency-amount {
-    width: 15%;
-}
+    .transparency-party, .transparency-amount {
+        width: 15%;
+    }
 
-.transparency-comment {
-    width: 70%;
+    .transparency-comment {
+        width: 70%;
+    }
 }
 
 .video-container {
@@ -223,21 +227,21 @@ table.transparency th {
     width: 33%;
     display: block;
     float: left;
-}
 
-.youtube-video > img {
-    width: 100%;
-    overflow-y: hidden;
-    margin-bottom: calc(-12.5%);
-    margin-top: calc(-12.5%);
-}
+    &> img {
+        width: 100%;
+        overflow-y: hidden;
+        margin-bottom: calc(-12.5%);
+        margin-top: calc(-12.5%);
+    }
 
-.youtube-video > p {
-    text-align: center;
-    font-size: 1.3em;
-    width: 100%;
-    position: relative;
-    margin-bottom: 30px;
+    &> p {
+        text-align: center;
+        font-size: 1.3em;
+        width: 100%;
+        position: relative;
+        margin-bottom: 30px;
+    }
 }
 
 .sites {
@@ -251,7 +255,7 @@ table.transparency th {
     width: calc(33% - 28px);
     margin: 8px;
     padding: 6px;
-    background-color: #ffd1;
+    background-color: var(--transparent-highlight);
 }
 
 .site-details {
@@ -293,18 +297,17 @@ table.transparency th {
         padding-left: 42.5%;
         padding-right: 42.5%;
         width: 15%;
-    }
-
-    .big-link > span {
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 30%;
-        font-size: 5vw;
-        padding: 8px;
-        transform: translate(-25%, -50%);
-        background-color: #0009;
+        &> span {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30%;
+            font-size: 5vw;
+            padding: 8px;
+            transform: translate(-25%, -50%);
+            background-color: #0009;
+        }
     }
 
     .project {
@@ -368,16 +371,16 @@ table.transparency th {
         position: absolute;
         height: 80px;
         width: 80px;
+
+        .big-logo  {
+            position: relative !important;
+            height: 30px !important;
+            width: 30px !important;
+        }
     }
     
     .quote {
         display: none;
-    }
-    
-    img.big-logo  {
-        position: relative !important;
-        height: 30px !important;
-        width: 30px !important;
     }
     
     .link {

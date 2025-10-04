@@ -9,8 +9,8 @@
     --secondary: light-dark(#2222ff, #ffe084);
     --background: light-dark(#dddddd, #000000);
     --highlight: light-dark(#000000, #dddddd);
-    --transparent-highlight: rgb(from var(--highlight) 100% 100% 100% / 7%);
-    --transparent-shadow: rgb(from var(--background) 100% 100% 100% / 7%);
+    --transparent-highlight: light-dark(#00000044, #dddddd10);
+    --transparent-shadow: light-dark(#dddddd10, #00000044);
 }
 
 * {

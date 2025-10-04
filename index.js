@@ -1,8 +1,13 @@
 // Compile all pages and render them to /out
-const pug = require('pug')
-const fs = require('fs')
-const { sync: glob } = require('glob')
-const argv = require('minimist')(process.argv.slice(2))
+import pug from 'pug'
+import fs from 'fs'
+import glob from 'glob'
+import minimist from 'minimist'
+import rtf from '@iarna/rtf-to-html'
+import express from 'express'
+import serve from 'express-static'
+
+const argv = minimist(process.argv.slice(2))
 
 try {
     fs.rmSync('./out', {recursive: true})
@@ -12,7 +17,7 @@ let templateVariables = {
     name: "Pat Hallbick"
 }
 
-let files = glob('data/finances/*.csv')
+let files = glob.sync('data/finances/*.csv')
 let finances = []
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -24,8 +29,8 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
     let contents = fs.readFileSync(filename).toString()
     let data = []
     for(let line of contents.split('\n')) {
-        datum = line.split(',')
-        x = Number.parseFloat(datum[1])
+        let datum = line.split(',')
+        let x = Number.parseFloat(datum[1])
         if(Number.isNaN(x) || x == 0) continue;
         total += x
         grandTotal += x
@@ -42,7 +47,7 @@ for(let filename of files) { // All of this is to ensure the latest are at the t
     ])
     let month = filename.split('/')[2].split('.')[0].split('-')
     let year = month[0]
-    date = new Date()
+    let date = new Date()
     date.setDate(1)
     date.setMonth(Number.parseInt(month[1]) - 1)
     month = date.toLocaleString("en-us", { month: "long" });
@@ -64,7 +69,7 @@ function getDirname(filename) {
 function copyFilesFrom(from, to, overwrite, filter) {
     if(!filter)
         filter = name => true
-    for(let file of glob(`${from}/*`)) {
+    for(let file of glob.sync(`${from}/*`)) {
         let filename = file.substring(from.length)
         let dirname = getDirname(filename)
 
@@ -82,18 +87,85 @@ function copyFilesFrom(from, to, overwrite, filter) {
 
 copyFilesFrom('./pages/shared', './out/shared', false, name => !name.endsWith('.pug'))
 
-for(let folder of glob('./pages/*')) {
+for(let folder of glob.sync('./pages/*')) {
     if(folder.endsWith('base') || folder.endsWith('shared')) continue
     let dirname = folder.substring(7)
     console.log('copying from ' + folder + ' to ' + `./out/${dirname}`)
     copyFilesFrom(folder, `./out/${dirname}`, true, name => !name.endsWith('.pug'))
 }
 
-for(let page of glob('./pages/**/*.pug')) {
+for(let site of glob.sync('./pages/*/')) {
+    if(site.includes('/base/')) continue
+
+    if(!fs.existsSync(`${site}blog/base.pug`)) {
+        console.log(`Site at ${site} does not have a blog template, skipping blog entry rendering...`)
+        console.log(`(Template expected at '${site}blog/base.pug')`)
+        continue
+    }
+
+    let meta
+    try {
+        meta = JSON.parse(fs.readFileSync(`${site}blog/meta.json`, { encoding: 'utf8', flag: 'r' }))
+    } catch {
+        meta = {}
+    }
+
+    let siteName = site.substring(7)
+    const start = `${site}blog/`.length
+    const template = pug.compileFile(`${site}blog/base.pug`)
+    for(let blog of glob.sync(`${site}blog/**/*.rtf`)) {
+        let fileName = blog.substring(start, blog.length - 4)
+        let blogTitle = fileName.split("/")
+        blogTitle = blogTitle[blogTitle.length - 1]
+        let callback = null
+        let error = null
+        let results = new Promise((resolve, reject) => {
+            callback = resolve
+            error = reject
+        })
+        rtf.fromString(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }).replace(/\\'\d+/g, " "), {
+            template: (doc, defaults, content) => {
+                return content
+            },
+            disableFonts: true
+        }, (err, html) => {
+            if(err) {
+                error(err)
+            } else {
+                callback(html)
+            }
+        })
+        let blogContents = await results
+
+        meta[blog] = meta[blog] ?? {}
+        meta[blog].path = blog
+        meta[blog].created = meta[blog].created ?? (new Date()).toISOString()
+        meta[blog].link = `/blog/${fileName}.html`
+        meta[blog].title = meta[blog].title ?? blogTitle
+        meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/\s+.*?$/, '') + "..."
+
+        let created = new Date(meta[blog].created).toLocaleString("en-US")
+
+        fs.writeFileSync(`./out${siteName}blog/${fileName}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
+    }
+
+    templateVariables.blogs = Object.values(meta)
+        .filter((blog) => fs.existsSync(blog.path))
+        .sort((blog) => blog.created)
+        .reverse()
+        .map((blog) => {
+            blog.created = new Date(blog.created).toLocaleString("en-US")
+            return blog
+        })
+
+    fs.writeFileSync(`${site}blog/meta.json`, JSON.stringify(meta), { encoding: 'utf8' })
+}
+
+for(let page of glob.sync('./pages/**/*.pug')) {
     if(page.includes('/base/')) continue
 
     console.log(page)
-    pageName = page.substring(7, page.length - 4)
+    const pageName = page.substring(7, page.length - 4)
 
     let dir = pageName.split('/')
     dir.pop()
@@ -106,17 +178,15 @@ for(let page of glob('./pages/**/*.pug')) {
     )
 }
 
-for(let site of glob('./out/*')) {
+for(let site of glob.sync('./out/*')) {
     copyFilesFrom('./out/shared', site, false)
 }
 
 if(argv.dev) {
     console.log('Running in dev, starting server...')
-    const express = require('express')
-    const serve = require('express-static')
 
     let port = 8888
-    for(let site of glob('out/*')) {
+    for(let site of glob.sync('out/*')) {
         if(site.endsWith('shared') || site.endsWith('base')) continue
         const app = express()
         

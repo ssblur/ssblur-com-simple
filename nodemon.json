@@ -1,4 +1,4 @@
 {
-    "ext": "js,json,pug,csv,css",
-    "ignore": ["./out"]
+    "ext": "js,json,pug,csv,css,rtf",
+    "ignore": ["./out", "meta.json"]
 }

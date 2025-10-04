@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A simple templated site for ssblur",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "build": "node .",
     "dev": "nodemon index.js --dev",
@@ -11,6 +12,7 @@
   "author": "Patrick Hallbick",
   "license": "ISC",
   "dependencies": {
+    "@iarna/rtf-to-html": "^1.1.0",
     "glob": "^8.0.3",
     "pug": "^3.0.2"
   },

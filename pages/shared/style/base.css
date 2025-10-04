@@ -32,6 +32,12 @@ img.big-logo {
     height: auto;
 }
 
+.datemark {
+    position: absolute;
+    right: 4%;
+    opacity: 50%;
+}
+
 .link-container {
     width: 100%;
 
@@ -264,6 +270,16 @@ table.transparency {
     padding-left: 8px;
 }
 
+.blog {
+    position: relative;
+    padding: 4px;
+    text-align: center;
+    width: 66%;
+    left: 16.666%;
+    margin-bottom: 4px;
+    background-color: var(--transparent-highlight);
+}
+
 .reference {
     display: block;
     float: right;
@@ -308,6 +324,11 @@ table.transparency {
             transform: translate(-25%, -50%);
             background-color: #0009;
         }
+    }
+
+    .blog {
+        width: 90%;
+        left: 5%;
     }
 
     .project {

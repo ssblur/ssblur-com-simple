@@ -1,0 +1,12 @@
+extends ../base.pug
+
+block title 
+  title= blogTitle
+
+block content
+  p
+    small.datemark Initially published on 
+      =created
+  h1= blogTitle
+  p
+    | !{blogContents}

@@ -146,7 +146,7 @@ for(let site of glob.sync('./pages/*/')) {
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
 
-        fs.writeFileSync(`./out${siteName}blog/${fileName}.html`, template({blogTitle, blogContents, created}), { encoding: 'ascii' })
+        fs.writeFileSync(`./out${siteName}blog/${fileName}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
     }
 
     templateVariables.blogs = Object.values(meta)

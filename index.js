@@ -123,7 +123,7 @@ for(let site of glob.sync('./pages/*/')) {
             callback = resolve
             error = reject
         })
-        rtf.fromString(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }).replace(/\\'\d+/g, " "), {
+        rtf.fromString(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }).replace(/\\'\d\d/g, " "), {
             template: (doc, defaults, content) => {
                 return content
             },

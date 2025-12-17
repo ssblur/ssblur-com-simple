@@ -1,1 +1,16 @@
-{"./pages/ssblur.com/blog/Blogging.rtf":{"created":"10/3/2025, 10:31:21 PM","title":"Blogging","link":"/blog/Blogging.html","path":"./pages/ssblur.com/blog/Blogging.rtf","teaser":"I like blogging, but only like, kinda. And less in the microbloggy “post-quips-online-to-cultivate-a-following” way but in the “maybe-my-journals-will-be-unearthed-in-a-millenium” way. And, to that end, I added Blogging to ssblur.com / blur.gay...."},"./pages/ssblur.com/blog/Blogging (copy).rtf":{"created":"2025-10-04T03:17:47.341Z","link":"/blog/Blogging (copy).html","title":"Blogging (copy)"}}
+{
+  "./pages/ssblur.com/blog/Blogging.md": {
+    "created": "10/3/2025, 10:31:21 PM",
+    "title": "Blogging",
+    "link": "/blog/Blogging.html",
+    "path": "./pages/ssblur.com/blog/Blogging.md",
+    "teaser": "I like blogging, but only like, kinda. And less in the microbloggy “post-quips-online-to-cultivate-a-following” way but in the “maybe-my-journals-will-be-unearthed-in-a-millenium” way. And, to that end, I added Blogging to ssblur.com / blur.gay...."
+  },
+  "./pages/ssblur.com/blog/If it ain't broke.md": {
+    "path": "./pages/ssblur.com/blog/If it ain't broke.md",
+    "created": "12/17/2025, 11:23:54 AM",
+    "link": "/blog/If-it-ain-t-broke.html",
+    "title": "If it ain't broke",
+    "teaser": "Fix it twice...."
+  }
+}

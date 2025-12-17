@@ -3,9 +3,9 @@ import pug from 'pug'
 import fs from 'fs'
 import glob from 'glob'
 import minimist from 'minimist'
-import rtf from '@iarna/rtf-to-html'
 import express from 'express'
 import serve from 'express-static'
+import { marked } from 'marked'
 
 const argv = minimist(process.argv.slice(2))
 
@@ -113,40 +113,23 @@ for(let site of glob.sync('./pages/*/')) {
     let siteName = site.substring(7)
     const start = `${site}blog/`.length
     const template = pug.compileFile(`${site}blog/base.pug`)
-    for(let blog of glob.sync(`${site}blog/**/*.rtf`)) {
-        let fileName = blog.substring(start, blog.length - 4)
+    for(let blog of glob.sync(`${site}blog/**/*.md`)) {
+        let fileName = blog.substring(start, blog.length - 3)
+        let link = fileName.replace(/[^A-Za-z]/g, '-')
         let blogTitle = fileName.split("/")
         blogTitle = blogTitle[blogTitle.length - 1]
-        let callback = null
-        let error = null
-        let results = new Promise((resolve, reject) => {
-            callback = resolve
-            error = reject
-        })
-        rtf.fromString(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }).replace(/\\'\d\d/g, " "), {
-            template: (doc, defaults, content) => {
-                return content
-            },
-            disableFonts: true
-        }, (err, html) => {
-            if(err) {
-                error(err)
-            } else {
-                callback(html)
-            }
-        })
-        let blogContents = await results
+        let blogContents = marked.parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))
 
         meta[blog] = meta[blog] ?? {}
         meta[blog].path = blog
         meta[blog].created = meta[blog].created ?? (new Date()).toISOString()
-        meta[blog].link = `/blog/${fileName}.html`
+        meta[blog].link = `/blog/${link}.html`
         meta[blog].title = meta[blog].title ?? blogTitle
         meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/\s+.*?$/, '') + "..."
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
 
-        fs.writeFileSync(`./out${siteName}blog/${fileName}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
+        fs.writeFileSync(`./out${siteName}blog/${link}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
     }
 
     templateVariables.blogs = Object.values(meta)
@@ -158,7 +141,7 @@ for(let site of glob.sync('./pages/*/')) {
             return blog
         })
 
-    fs.writeFileSync(`${site}blog/meta.json`, JSON.stringify(meta), { encoding: 'utf8' })
+    fs.writeFileSync(`${site}blog/meta.json`, JSON.stringify(meta, null, 2), { encoding: 'utf8' })
 }
 
 for(let page of glob.sync('./pages/**/*.pug')) {

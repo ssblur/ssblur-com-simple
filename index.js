@@ -151,6 +151,7 @@ for(let site of glob.sync('./pages/*/')) {
                     title: { _text: m.title },
                     link: { _text: `https:/${siteName}${m.link.substring(1)}` },
                     description: { _text: m.teaser },
+                    pubDate: { _text: new Date(m.created).toUTCString() }
                 }))
             }
         }

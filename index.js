@@ -6,6 +6,8 @@ import minimist from 'minimist'
 import express from 'express'
 import serve from 'express-static'
 import { marked } from 'marked'
+import convert from 'xml-js'
+import { channel } from 'diagnostics_channel'
 
 const argv = minimist(process.argv.slice(2))
 
@@ -131,6 +133,29 @@ for(let site of glob.sync('./pages/*/')) {
 
         fs.writeFileSync(`./out${siteName}blog/${link}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
     }
+
+    let rss = convert.js2xml({
+        _declaration: {
+            _attributes: {
+                version: "1.0",
+                encoding: "utf-8"
+            }
+        },
+        rss: {
+            _attributes: { version: "2.0" },
+            channel: {
+                title: { _text: "it's blur blog" },
+                link: { _text: `https:/${siteName}blog/index.html` },
+                description: { _text: "The infrequently-updated blog of blur"},
+                item: Object.values(meta).sort((a, b) => new Date(b.created) - new Date(a.created)).map(m => ({
+                    title: { _text: m.title },
+                    link: { _text: `https:/${siteName}${m.link.substring(1)}` },
+                    description: { _text: m.teaser },
+                }))
+            }
+        }
+    }, {compact: true,});
+    fs.writeFileSync(`./out${siteName}blog/feed.xml`, rss)
 
     templateVariables.blogs = Object.values(meta)
         .filter((blog) => fs.existsSync(blog.path))

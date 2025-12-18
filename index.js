@@ -117,7 +117,7 @@ for(let site of glob.sync('./pages/*/')) {
     const template = pug.compileFile(`${site}blog/base.pug`)
     for(let blog of glob.sync(`${site}blog/**/*.md`)) {
         let fileName = blog.substring(start, blog.length - 3)
-        let link = fileName.replace(/[^A-Za-z]/g, '-')
+        let link = fileName.replace(/[^A-Za-z\/]/g, '-')
         let blogTitle = fileName.split("/")
         blogTitle = blogTitle[blogTitle.length - 1]
         let blogContents = marked.parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))
@@ -127,7 +127,7 @@ for(let site of glob.sync('./pages/*/')) {
         meta[blog].created = meta[blog].created ?? (new Date()).toISOString()
         meta[blog].link = `/blog/${link}.html`
         meta[blog].title = meta[blog].title ?? blogTitle
-        meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/\s+.*?$/, '') + "..."
+        meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
 

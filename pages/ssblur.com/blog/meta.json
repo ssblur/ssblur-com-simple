@@ -12,5 +12,12 @@
     "link": "/blog/If-it-ain-t-broke.html",
     "title": "If it ain't broke",
     "teaser": "Fix it twice...."
+  },
+  "./pages/ssblur.com/blog/tinylife/Making Tiny Louvre.md": {
+    "path": "./pages/ssblur.com/blog/tinylife/Making Tiny Louvre.md",
+    "created": "12/17/2025, 8:55:29 PM",
+    "link": "/blog/tinylife/Making-Tiny-Louvre.html",
+    "title": "Making Tiny Louvre",
+    "teaser": "So, recently I made a mod for Tiny Life called Tiny Louvre. \nThis mod adds paintings you can create in-game that both show up on furniture in-game and can be shared with and downloaded from other players.\nI made a video about the mod and how it works if youre interested:..."
   }
 }

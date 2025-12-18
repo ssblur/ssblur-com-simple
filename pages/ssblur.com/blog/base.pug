@@ -3,6 +3,9 @@ extends ../base.pug
 block title 
   title= blogTitle
 
+block description
+  meta(name='description' content=teaser)
+
 block content
   p
     small.datemark Initially published on 

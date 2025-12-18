@@ -8,11 +8,12 @@ block head
     block title
       title { replace me }
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(name='description' content='The home of SSBlur')
+    block description
+      meta(name='description' content='The home of SSBlur')
     meta(charset="UTF-8")
     //- base(href="/")
     link(href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet')
-    link(rel='icon' href='icon.png')
+    link(rel='icon' href='/icon.png')
     link(rel='stylesheet' href='/style/font/typicons.css')
     link(rel='stylesheet' href='/style/base.css')
     | <!--[if IE]>

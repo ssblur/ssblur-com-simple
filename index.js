@@ -130,8 +130,13 @@ for(let site of glob.sync('./pages/*/')) {
         meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
+        let teaser = meta[blog].teaser
 
-        fs.writeFileSync(`./out${siteName}blog/${link}.html`, template({blogTitle, blogContents, created}), { encoding: 'utf8' })
+        fs.writeFileSync(
+            `./out${siteName}blog/${link}.html`, 
+            template({blogTitle, blogContents, created, teaser}), 
+            { encoding: 'utf8' }
+        )
     }
 
     let rss = convert.js2xml({

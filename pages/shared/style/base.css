@@ -294,6 +294,15 @@ table.transparency {
     height: auto;
 }
 
+code {
+    background-color: var(--transparent-highlight);
+    border: 1px solid var(--transparent-highlight);
+    border-left: 3px solid var(--highlight);
+    padding-right: 2px;
+    padding-left: 4px;
+    display: inline-block;
+}
+
 @media(max-width: 940px) {
     .links {
         width: 100%;

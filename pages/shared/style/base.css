@@ -301,6 +301,12 @@ code {
     padding-right: 2px;
     padding-left: 4px;
     display: inline-block;
+    max-width: 90%;
+    overflow-x: scroll;
+}
+
+.blog-contents > * > img {
+    max-width: 100%;
 }
 
 @media(max-width: 940px) {

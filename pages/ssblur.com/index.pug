@@ -1,5 +1,6 @@
 extends base.pug
 include ../base/projects.pug
+include ../base/blog.pug
 
 block title 
   title it's blur
@@ -66,12 +67,8 @@ block content
   h1 The Haps 
   p Recent blog posts made to this site. Well, "recent". 
   p Topics range wildly and these are untagged, so explore with caution.
-  each blog in blogs.splice(0, 2)
-    a(href=blog.link)
-      div.blog
-        small.datemark=blog.created
-        h2=blog.title
-        p=blog.teaser
+  each post in blogs.splice(0, 2)
+    +blog(post)
   h1 Featured Projects 
   p
     | These are some projects I've been working on recently.

@@ -1,5 +1,6 @@
 extends ../base.pug
 include ../../base/icon.pug
+include ../../base/blog.pug
 
 block title 
   title Blog
@@ -10,9 +11,5 @@ block content
       +icon('rss')
   p This is where I put articles that don't fit cleanly into other sections of the site.
   p Sorted by recency, most recent at the top.
-  each blog in blogs
-    a(href=blog.link)
-      div.blog
-        small.datemark=blog.created
-        h2=blog.title
-        p=blog.teaser
+  each post in blogs
+    +blog(post)

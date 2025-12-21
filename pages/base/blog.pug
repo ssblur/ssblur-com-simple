@@ -1,0 +1,8 @@
+mixin blog(post)
+  div.blog
+    h2
+      a(href=post.link)=post.title
+    small.datemark
+      | Created 
+      = post.created
+    p=post.teaser

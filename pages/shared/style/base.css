@@ -4,7 +4,7 @@
 }
 
 :root {
-    color-scheme: light dark;
+    color-scheme: dark light;
     --primary: light-dark(#000000, #ffc928);
     --secondary: light-dark(#2222ff, #ffe084);
     --background: light-dark(#dddddd, #000000);
@@ -30,11 +30,13 @@ body {
 img.big-logo {
     width: 100%;
     height: auto;
+    @media (prefers-color-scheme: light) {
+        filter: invert(1.0) brightness(1.75);
+    }
 }
 
 .datemark {
-    position: absolute;
-    right: 4%;
+    display: block;
     opacity: 50%;
 }
 
@@ -193,6 +195,9 @@ img.project-background {
     z-index: -1;
     opacity: 35%;
     transform: translateY(-50%);
+    @media (prefers-color-scheme: light) {
+        filter: grayscale(1.0);
+    }
 }
 
 .project-content {

@@ -242,8 +242,6 @@ table.transparency {
     &> img {
         width: 100%;
         overflow-y: hidden;
-        margin-bottom: calc(-12.5%);
-        margin-top: calc(-12.5%);
     }
 
     &> p {

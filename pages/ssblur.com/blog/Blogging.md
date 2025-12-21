@@ -1,3 +1,5 @@
+## Update: there is a [follow-up](/blog/If-it-ain-t-broke.html) to this.
+
 I like blogging, but only like, kinda. And less in the microbloggy “post-quips-online-to-cultivate-a-following” way but in the “maybe-my-journals-will-be-unearthed-in-a-millenium” way. And, to that end, I added Blogging to ssblur.com / blur.gay.
 
 Of course, this site is not served dynamically and runs no clientside JavaScript. So how do I blog?

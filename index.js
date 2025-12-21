@@ -121,12 +121,12 @@ for(let site of glob.sync('./pages/*/')) {
         blogTitle = blogTitle[blogTitle.length - 1]
         let blogContents = marked.parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))
 
-        meta[blog] = meta[blog] ?? {}
+        meta[blog] ??= {}
         meta[blog].path = blog
-        meta[blog].created = meta[blog].created ?? (new Date()).toISOString()
+        meta[blog].created ??= (new Date()).toISOString()
         meta[blog].link = `/blog/${link}.html`
-        meta[blog].title = meta[blog].title ?? blogTitle
-        meta[blog].teaser = blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
+        meta[blog].title ??= blogTitle
+        meta[blog].teaser ??= blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
         let teaser = meta[blog].teaser

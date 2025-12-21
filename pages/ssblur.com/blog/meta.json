@@ -19,5 +19,12 @@
     "link": "/blog/tinylife/Making-Tiny-Louvre.html",
     "title": "Making Tiny Louvre",
     "teaser": "So, recently I made a mod for Tiny Life called Tiny Louvre. \nThis mod adds paintings you can create in-game that both show up on furniture in-game and can be shared with and downloaded from other players.\nI made a video about the mod and how it works if youre interested:..."
+  },
+  "./pages/ssblur.com/blog/Arr Ess Ess.md": {
+    "path": "./pages/ssblur.com/blog/Arr Ess Ess.md",
+    "created": "12/20/2025, 9:52:49 PM",
+    "link": "/blog/Arr-Ess-Ess.html",
+    "title": "Arr Ess Ess",
+    "teaser": "RSS is a cool technology, and one that has endured for a long time. I, personally use an RSS reader (Thunderbird, but prone to change) to keep up with a lot of socials and news sites that I just dont want to follow or check up on directly...."
   }
 }

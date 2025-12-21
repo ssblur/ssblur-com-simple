@@ -7,7 +7,6 @@ import express from 'express'
 import serve from 'express-static'
 import { marked } from 'marked'
 import convert from 'xml-js'
-import { channel } from 'diagnostics_channel'
 
 const argv = minimist(process.argv.slice(2))
 

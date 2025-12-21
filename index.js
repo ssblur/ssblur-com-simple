@@ -86,13 +86,17 @@ function copyFilesFrom(from, to, overwrite, filter) {
     }
 }
 
-copyFilesFrom('./pages/shared', './out/shared', false, name => !name.endsWith('.pug'))
+function compiledExtension(name) {
+    return name.endsWith('.pug') || name.endsWith('.md')
+}
+
+copyFilesFrom('./pages/shared', './out/shared', false, name => !compiledExtension(name))
 
 for(let folder of glob.sync('./pages/*')) {
     if(folder.endsWith('base') || folder.endsWith('shared')) continue
     let dirname = folder.substring(7)
     console.log('copying from ' + folder + ' to ' + `./out/${dirname}`)
-    copyFilesFrom(folder, `./out/${dirname}`, true, name => !name.endsWith('.pug'))
+    copyFilesFrom(folder, `./out/${dirname}`, true, name => !compiledExtension(name))
 }
 
 for(let site of glob.sync('./pages/*/')) {
@@ -116,7 +120,7 @@ for(let site of glob.sync('./pages/*/')) {
     const template = pug.compileFile(`${site}blog/base.pug`)
     for(let blog of glob.sync(`${site}blog/**/*.md`)) {
         let fileName = blog.substring(start, blog.length - 3)
-        let link = fileName.replace(/[^A-Za-z\/]/g, '-')
+        let link = fileName.replace(/[^A-Za-z0-9\/]/g, '-')
         let blogTitle = fileName.split("/")
         blogTitle = blogTitle[blogTitle.length - 1]
         let blogContents = marked.parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))

@@ -25,3 +25,47 @@ Well, it’s perfect for me here. I use LibreOffice for most of my writing tasks
 
 And hey, I’m in luck, there’s even an NPM package to handle converting from RTF to HTML, [@iarna/rtf-to-html](https://github.com/iarna/rtf-to-html). 
 
+Well that simplifies things! Now the last step is keeping that metadata, which seems simple enough! After all, most filesystems already store the sort of metadata I was thinking about, namely when files are created and updated.
+But, uh, I don’t really think they fit my needs exactly. After all, I want the created date to reflect when the article was published, not when the file was created. In addition, I’d like to be able to tweak the details manually in case I ever have reason to, and while that’s possible with that sort of metadata it can be a pain.
+
+Ultimately, I just stuck all the data into a JSON file in the blogs directory. Sure, it works.
+# Puzzles and Pieces
+
+So all that’s left is to slot everything together. I add a new loop to my rendering step that goes over each site, renders any RTF files in the blog section into an HTML file based on a base.pug template located in that folder, then have it load and update the metadata as necessary. I also threw the title in there so I can tweak the titles of articles as desired, since currently the titles are based on their file names. 
+
+Not elegant, but it works.
+
+And I love when things work.
+
+# Or Not
+
+So, everything seems great, right? This all works fine with small blog entries, so what could go wrong with bigger ones?
+
+Symbols.
+
+So, RTF documents embed invisible symbols that are meant to help with formatting. Things like which direction a quote should face, I think. IDK I’m not digging back into the specs for this and it’s been a while.
+
+And normally, they, uh, crash this parser.
+
+I get an error that reads like
+
+```
+Error: Encoding not recognized: 'SYMBOL' (searched as: 'symbol')
+```
+
+Ok, sure, I’ll just go digging around and look for that. 
+
+Ah, yes, I see. In the flushHexStore function in the rtf-interpreter, there’s a little bit where it looks up symbols using iconv decode and the charset for this group. I’ll just bypass this for now if it errors, and we can circle back.
+And it works! Kinda.
+
+Now the document is full of question mark boxes everywhere, weird. It seems like they’re after every quote or bullet point, so I’d deduce these are those same formatting symbols. 
+
+You know what I do remember about these? They all have a pretty consistent text representation, a backslash, single quote, and 2 numbers. Bet I could…
+
+```
+.replace(/\\'\d+/g, " ")
+```
+
+There we go. Just read the RTF file in, remove these characters, and forward to the formatter. It’s ugly, but you know what? It’s easier than working on someone else’s formatter. And it works.
+
+I love it when things work.

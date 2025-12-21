@@ -20,11 +20,11 @@ jobs:
         with:
           name: ssblur.com
           path: out/ssblur.com
-      - name: pemery.co artifact
+      - name: phallbick.co artifact
         uses: actions/upload-artifact@v4
         with:
-          name: pemery.co
-          path: out/pemery.co
+          name: phallbick.co
+          path: out/phallbick.co
       - uses: shallwefootball/s3-upload-action@master
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
@@ -37,7 +37,7 @@ jobs:
           aws_key_id: ${{ secrets.PEMERY_AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.PEMERY_AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.PEMERY_AWS_BUCKET }}
-          source_dir: './out/pemery.co'
+          source_dir: './out/phallbick.co'
           destination_dir: ''
       - uses: bcomnes/deploy-to-neocities@v1
         with:

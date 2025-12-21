@@ -1,4 +1,9 @@
 @font-face {
+    font-family: 'MODESEVEN';
+    src: url('/style/font/Modeseven-L3n5.ttf');
+}
+
+@font-face {
     font-family: 'VGA';
     src: url('/style/font/Web437_IBM_VGA_9x14.woff');
 }
@@ -13,8 +18,8 @@
     --transparent-shadow: light-dark(#dddddd10, #00000044);
 }
 
-* {
-    font-family: 'VGA';
+html {
+    font-family: 'MODESEVEN';
     color: var(--primary);
 }
 
@@ -298,6 +303,7 @@ table.transparency {
 }
 
 code {
+    font-family: 'VGA';
     background-color: var(--transparent-highlight);
     border: 1px solid var(--transparent-highlight);
     border-left: 3px solid var(--highlight);

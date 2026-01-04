@@ -5,4 +5,7 @@ mixin blog(post)
     small.datemark
       | Created 
       = post.created
+      if post.updated 
+        | , updated 
+        = post.updated
     p=post.teaser

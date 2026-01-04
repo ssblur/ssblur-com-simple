@@ -1,10 +1,14 @@
 So, recently I made a mod for Tiny Life called Tiny Louvre. 
-This mod adds paintings you can create in-game that both show up on furniture in-game and can be shared with and downloaded from other players.
+This mod adds paintings you can create in-game that both show up on furniture in-game and can be shared with and downloaded from other players. 
+To this end, the mod adds a variety of bits, like an easel with a painting
+interface, a museum where people can view art collated from online, 
+and, well, the paintings themselves!
+
 I made a video about the mod and how it works if you're interested:
 
 [![Tiny Louvre Video Thumbnail](https://img.youtube.com/vi/CipQ_CEHk0M/0.jpg)](https://www.youtube.com/watch?v=CipQ_CEHk0M)
 
-Anyways, when I was making it, I bumped into some design challenges, and for the sake of my future sake and anyone else looking to make a Tiny Life mod with these features, I figured I'd enumerate the challenges and the solutions I landed on.
+Anyways, when I was making it, I bumped into some design challenges, and for the sake of my future self and anyone else looking to make a Tiny Life mod with these features, I figured I'd enumerate the challenges and the solutions I landed on.
 
 ## Adding Default Maps
 
@@ -32,7 +36,7 @@ So, reading in modern day you might see something noteworthy in the `OnGetStatic
 
 ```If this event is subscribed to and one or more custom maps are added to the list, the OnLoadStaticMap event should also be subscribed to to handle actually loading these maps.```
 
-That's because ell is an angel and added that to the docs when I started having trouble with this.
+That's because ell added that to the docs while we were talking about this issue.
 At the time, I had no idea I had to do something else to load the map, but it turns out I *also* had to subscribe to
 [OnLoadStaticMap](https://docs.tinylifegame.com/api/TinyLife.World.Map.html#TinyLife_World_Map_OnLoadStaticMap).
 Okay, so add a new bit to `AddGameContent`, 
@@ -56,7 +60,7 @@ So, adding the online mode features, while a technological challenge on their ow
 What I did have some issues with, however, was getting a pop-up to appear the first time the mod was loaded asking the user if they wanted Online Mode enabled.
 On principal, I didn't want to have online functionality in an offline-by-default game without disclosing that it was user-generated and confirming with the player.
 
-For determining whether it was actually enabled, Tiny Life actually has a pretty good Options system, letting you put all your controls in the mod's options section using the `PopulateOptions` hook, and providing convenience functions like `ModInfo.LoadOptions` to load your mod options into a convenient little object.
+For determining whether it was actually enabled, Tiny Life actually has a pretty good Options system, letting you put all your controls in the mod's options section using the `PopulateOptions` hook, and providing methods like `ModInfo.LoadOptions` to load your mod options into a convenient little object.
 Handy!
 
 My first approach, and a bit of a naïve one, was just to do exactly what I usually do to open a menu, but right when the mod loads up.
@@ -86,7 +90,7 @@ Sure, why not?
 
 So, for Tiny Louvre, my original plan was to add a renderer to just draw the paintings askew and realign to the top pixels, either by drawing in blocks or using a shader.
 
-But wait, Tiny Life is built on MLEM, which uses MonoGame. 
+But wait, Tiny Life is built with MLEM, which is based on MonoGame. 
 I can just construct textures in memory to save on render time!
 
 ```cs
@@ -96,11 +100,12 @@ _furnitureTextures[1] ??= new Texture2D(device, SIZE_X, (SIZE_Y + ho));
 
 Tiny Louvre keeps its furniture textures small, only constructing two for the downward-facing variants of Paintings.
 
-When generating these, I just take the canvas (which I also convert to a Texture2D for rendering), then march from left to right placing pixels slightly askew, by either starting at the top and shifting down every column or vice versa.
+When generating these, I just take the canvas (which I also convert to a Texture2D for rendering), then march from left to right placing pixels slightly askew, by either starting at the top and shifting down every other column or 
+vice versa.
 
 Then, when it comes time to render in the world, it's as easy as drawing into the level, right?
 
-Well, when I used the base `Draw` function, for some reason stuff just... wasn't working? 
+Well, when I used the base `Draw` method, for some reason stuff just... wasn't working? 
 The layering was off, it was drawing paintings on every floor.
 
 ![Tiny Louvre paintings drawing through the floor](./images/tinylouvre/tinylouvrelayering.png)
@@ -129,7 +134,7 @@ Through his effort, during the dev process here and elsewhere, Tiny Life's moddi
 
 Also, don't be afraid to reach out for help in the 
 [#tiny-life-modding](https://discord.com/channels/181435613147430913/981562300592947220) 
-channel on Ell's Discord.
+channel on the Ellpeck Games Discord.
 Plenty of folks (myself included on occasion) are willing to help you get your mod working by pointing you to the right spots in documentation, helping you figure out tough problems, or rubber ducking for you as you walk through your process.
 
 Honestly, I just like modding in Tiny Life.

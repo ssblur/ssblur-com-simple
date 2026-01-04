@@ -7,6 +7,7 @@ import express from 'express'
 import serve from 'express-static'
 import { marked } from 'marked'
 import convert from 'xml-js'
+import crypto from 'crypto'
 
 const argv = minimist(process.argv.slice(2))
 
@@ -128,16 +129,23 @@ for(let site of glob.sync('./pages/*/')) {
         meta[blog] ??= {}
         meta[blog].path = blog
         meta[blog].created ??= (new Date()).toISOString()
+        
         meta[blog].link = `/blog/${link}.html`
         meta[blog].title ??= blogTitle
         meta[blog].teaser ??= blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
+
+        let hash = crypto.createHash('sha1').update(blogContents).digest('base64')
+        if((meta[blog].hash ?? hash) != hash) {
+            meta[blog].updated = (new Date()).toISOString()
+        }
+        meta[blog].hash = hash
 
         let created = new Date(meta[blog].created).toLocaleString("en-US")
         let teaser = meta[blog].teaser
 
         fs.writeFileSync(
             `./out${siteName}blog/${link}.html`, 
-            template({blogTitle, blogContents, created, teaser}), 
+            template({...meta[blog], contents: blogContents}), 
             { encoding: 'utf8' }
         )
     }
@@ -159,7 +167,7 @@ for(let site of glob.sync('./pages/*/')) {
                     title: { _text: m.title },
                     link: { _text: `https:/${siteName}${m.link.substring(1)}` },
                     description: { _text: m.teaser },
-                    pubDate: { _text: new Date(m.created).toUTCString() }
+                    pubDate: { _text: new Date(m.created).toUTCString() },
                 })).slice(0, 9)
             }
         }
@@ -171,7 +179,9 @@ for(let site of glob.sync('./pages/*/')) {
         .sort((blog) => blog.created)
         .reverse()
         .map((blog) => {
+            blog = {...blog}
             blog.created = new Date(blog.created).toLocaleString("en-US")
+            if(blog.updated) blog.updated = new Date(blog.updated).toLocaleString("en-US")
             return blog
         })
 

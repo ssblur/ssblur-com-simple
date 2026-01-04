@@ -1,7 +1,7 @@
 extends ../base.pug
 
 block title 
-  title= blogTitle
+  title= title
 
 block description
   meta(name='description' content=teaser)
@@ -9,9 +9,12 @@ block description
 block content
   p
     small.datemark Initially published on 
-      =created
-  h1= blogTitle
-  div.blog-contents !{blogContents}
+      = created
+      if updated
+        | , updated on 
+        = updated
+  h1= title
+  div.blog-contents !{contents}
   br
   br
   br

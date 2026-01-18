@@ -31,5 +31,13 @@
     "title": "Arr Ess Ess",
     "teaser": "RSS is a cool technology, and one that has endured for a long time. I, personally use an RSS reader (Thunderbird, but prone to change) to keep up with a lot of socials and news sites that I just dont want to follow or check up on directly....",
     "hash": "VMjNJwUMprqInsFwWZzm3O+az/E="
+  },
+  "./pages/ssblur.com/blog/js/You don't need JavaScript.md": {
+    "path": "./pages/ssblur.com/blog/js/You don't need JavaScript.md",
+    "created": "2026-01-18T00:57:02.550Z",
+    "link": "/blog/js/You-don-t-need-JavaScript.html",
+    "title": "You don't need JavaScript",
+    "teaser": "At least, probably.\nDont get me wrong, JavaScript is useful sometimes, it's a good technology\nand can really punch up your website.\nBut you probably don't need it, especially not anything fancy like React.\nWhy should I care?...",
+    "hash": "IzMOU9oLgim3QxpDFJXZHog08Go="
   }
 }

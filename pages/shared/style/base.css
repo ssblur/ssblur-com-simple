@@ -311,7 +311,9 @@ code {
     padding-left: 4px;
     display: inline-block;
     max-width: 90%;
-    overflow-x: scroll;
+    overflow-x: auto;
+    position:relative;
+    top: 5px;
 }
 
 .blog-contents > * > img {

@@ -6,6 +6,7 @@ import minimist from 'minimist'
 import express from 'express'
 import serve from 'express-static'
 import { marked } from 'marked'
+import markedFootnote from 'marked-footnote'
 import convert from 'xml-js'
 import crypto from 'crypto'
 
@@ -124,7 +125,7 @@ for(let site of glob.sync('./pages/*/')) {
         let link = fileName.replace(/[^A-Za-z0-9\/]/g, '-')
         let blogTitle = fileName.split("/")
         blogTitle = blogTitle[blogTitle.length - 1]
-        let blogContents = marked.parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))
+        let blogContents = marked.use(markedFootnote()).parse(fs.readFileSync(blog, { encoding: 'utf8', flag: 'r' }))
 
         meta[blog] ??= {}
         meta[blog].path = blog

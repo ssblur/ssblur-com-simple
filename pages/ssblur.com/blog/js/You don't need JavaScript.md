@@ -116,8 +116,8 @@ Really, you are the ultimate arbiter of whether it's worth it.
 
 ## What else is there?
 
-There are a number of alternatives to using JavaScript, but my favorite is
-probably the simplest:
+There are a number of alternatives to using big fancy JavaScript libraries, but 
+my favorite is probably the simplest:
 
 Don't
 
@@ -142,7 +142,7 @@ site generators are a godsend.
 There are a lot available, *and* it's pretty easy to roll your own!
 
 Personally, I've hand-rolled some, mostly using JavaScript or Python.
-This website is generated using a generator build in Node JS which uses Pug
+This website is generated using a generator built in Node JS which uses Pug
 as the template driver and a few miscellaneous libraries for data processing
 and other bits and bobs.
 
@@ -166,15 +166,14 @@ and lets you write your pages and such in Markdown, which is pretty handy.
 which is simple and pretty effective. I wrote this article with it!)
 
 When making documentation websites, a lot of times the language you're working
-in comes with a solid generator.
-Give that a go.
+in comes with a solid generator, and I'd recommend giving that a go.
 Oftentimes they're simple, straightforwards, and, importantly, don't require
 any additional work on your part.
 (Also for Lua check out 
 [LDoc](https://github.com/lunarmodules/ldoc), 
 it's pretty handy)
 
-There might also be most purpose-built tools for whatever you're getting up to,
+There might also be more purpose-built tools for whatever you're getting up to,
 so feel free to shop around!
 But what if you actually do need to show different information different times
 the page is loaded?

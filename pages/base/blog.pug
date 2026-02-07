@@ -1,7 +1,8 @@
 mixin blog(post)
   div.blog
     h2
-      a(href=post.link)=post.title
+      - var path = post.title.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()
+      a(href=post.link, data-path="C:\\BLOG\\" + path.substring(0, 7) + (path.length > 7 ? "~" : "") + ".TXT")=post.title
     small.datemark
       | Created 
       = post.created

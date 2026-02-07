@@ -1,27 +1,32 @@
 mixin mail
-    a(href='mailto:blur@blur.gay') 
+    a(href='mailto:blur@blur.gay', data-path="A:\\MAIL.COM") 
         +icon('mail')
         | blur@blur.gay
 
 mixin youtube 
-    a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
+    a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube', data-path="YOUTUBE.LNK")
         +icon('social-youtube')
         | YouTube
 
 mixin discord 
-    a(href='https://discord.gg/Uwbtmmb' title='Discord')
+    a(href='https://discord.gg/Uwbtmmb' title='Discord', data-path="DISCORD.LNK")
         +icon('social-discord')
         | Discord
 
 mixin tumblr
-    a(href='https://ssblur.tumblr.com' title='Tumblr')
+    a(href='https://ssblur.tumblr.com' title='Tumblr', data-path="TUMBLR.LNK")
         +icon('social-tumbler')
         | Tumblr
+
+mixin github
+    a(href='https://github.com/ssblur' title='GitHub', data-path="GITHUB.LNK")
+        +icon('social-github')
+        | GitHub
 
 mixin youtube-video(title, link)
     a(href='https://www.youtube.com/watch?v=' + link, title=title).youtube-video
         img(src='https://img.youtube.com/vi/' + link + '/maxresdefault.jpg')
-        p=title
+        p(data-path="A:\\YOUTUBE\\" + title.replace(/[^a-zA-Z0-9]/g, '').substring(0, 7).toUpperCase() + "~.LNK")=title
 
 mixin link(title, link)
     a(href=link title=title)
@@ -32,7 +37,8 @@ mixin link(title, link)
 mixin site(title, link, comment)
     .site
         a.site-title(href=link title=title)
-            =title
+            - var pathTitle = title.replace(/[^a-zA-Z0-9]/g, '').toUpperCase()
+            span(data-path="A:\\SITES\\" + pathTitle.substring(0, 7) + (pathTitle.length > 7 ? "~" : "") + ".LNK")=title
             span.site-details=`(${link})`
         .site-comment=comment
 

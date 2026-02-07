@@ -28,6 +28,28 @@ a:any-link {
     color: var(--secondary);
 }
 
+*[data-path] {
+    position: relative;
+
+    &:hover::after {
+        content: ">\00a0" attr(data-path) "\00a0\00a0";
+        display: block;
+        position: absolute;
+        color: var(--primary);
+        top: calc(-100% - 8px);
+        left: -4px;
+        padding: 4px;
+        min-width: 100%;
+        height: 95%;
+        text-align: center;
+        background: var(--background);
+        overflow-x: visible;
+        word-break: keep-all;
+        white-space: nowrap;
+        z-index: 99;
+    }
+}
+
 body {
     background-color: var(--background);
 }

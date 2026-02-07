@@ -11,50 +11,44 @@ block content
   .links
     a(href="https://www.youtube.com/@blurprime").big-link
       img(src="style/images/youtube.png", alt="YouTube").big-logo
-      span YouTube
+      span(data-path="YOUTUBE.LNK") YouTube
     a(href="https://twitch.tv/ssblur").big-link
       img(src="style/images/twitch.png", alt="Twitch").big-logo
-      span Twitch
+      span(data-path="TWITCH.LNK") Twitch
     a(href="https://github.com/ssblur").big-link
       img(src="style/images/github.png", alt="GitHub").big-logo
-      span GitHub
+      span(data-path="GITHUB.LNK") GitHub
     a(href="https://ssblur.tumblr.com").big-link
       img(src="style/images/tumblr.png", alt="Tumblr").big-logo
-      span Tumblr
+      span(data-path="TUMBLR.LNK") Tumblr
     a(href="https://discord.gg/fzZZhbe4rr").big-link
       img(src="style/images/discord.png", alt="Discord").big-logo
-      span Discord
+      span(data-path="DISCORD.LNK") Discord
     a(href="https://bsky.app/profile/blur.gay").big-link
       img(src="style/images/bsky.png", alt="BlueSky").big-logo
-      span BlueSky
+      span(data-path="BLUESKY.LNK") BlueSky
     a(href="https://ssblur.itch.io").big-link
       img(src="style/images/itch.png", alt="itch.io").big-logo
-      span itch.io
+      span(data-path="ITCHIO.LNK") itch.io
   p
     | This site serves as a portal for information about my public endeavors, such as coding projects, videos, streams, and status updates.
     | At the right of the navigation bar you will find links to my 
-    a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube')
-      +icon('social-youtube')
-      | YouTube
+    +youtube
     |                 ,
-    a(href='https://ssblur.tumblr.com' title='Tumblr')
-      +icon('social-tumbler')
-      | Tumblr
+    +tumblr
     |                 , and my 
-    a(href='https://github.com/ssblur' title='Github')
-      +icon('social-github')
-      | Github
+    +github
     | .
     | Under 
-    a(href='projects.html') Projects
+    a(href='projects.html', data-path="C:\\PROJ") Projects
     | , you will find information on some projects I liked enough to document, mainly bots.
     | Under 
-    a(href='transparency.html') Transparency
+    a(href='transparency.html', data-path="C:\\DOCS\\TRANS.TXT") Transparency
     | , you will find information on all money earned directly or indirectly through the platforms noted here,
     | as well as money spent directly on the channels.
     | (more information is available on the page). 
     | I also have a 
-    a(href='blog/index.html')
+    a(href='blog/index.html', data-path="C:\\BLOG")
       +icon('pencil')
       | Blog 
     | where I post write-ups on minor projects, technical stuff I find interesting, or whatever else 
@@ -62,7 +56,7 @@ block content
     br
     br
     | There's also an infrequently-updated 
-    a(href='questions.html') Q&amp;A 
+    a(href='questions.html', data-path="C:\\DOCS\\QA.TXT") Q&amp;A 
     | page which collates some questions I've been asked in the past.
   h1 Videos 
   p 

@@ -36,9 +36,10 @@ mixin project(name, background, links)
     each item in links
         if item.includes("ssblur.com")
             - href = item 
+    - var data = (href ? "C:\\PROJ\\" + name.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().substring(0, 7) + "~.TXT" : null)
     .project
         p
-            a(href=href)
+            a(href=href, data-path=data)
                 h2= name
             .project-links
                 each item in links

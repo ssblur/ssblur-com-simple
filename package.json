@@ -9,7 +9,7 @@
     "dev": "nodemon index.js --dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Pat Hallbick",
+  "author": "Juniper Hallbick",
   "license": "ISC",
   "dependencies": {
     "glob": "^8.0.3",

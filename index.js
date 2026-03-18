@@ -17,7 +17,7 @@ try {
 } catch (e) {}
 
 let templateVariables = {
-    name: "Pat Hallbick"
+    name: "Juniper Hallbick"
 }
 
 let files = glob.sync('data/finances/*.csv')

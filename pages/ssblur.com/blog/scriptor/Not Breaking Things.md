@@ -92,7 +92,7 @@ Giving players the ability to target you with a spell from *anywhere* feels bad,
 
 Well, that removes the main utility I wanted to introduce, which was the ability for nominomists to design spells that apply to them from anywhere.
 Mix it with a high cost to allow for things like chalk circles players can trigger remotely, or lecterns with reagents to power you up for a bit.
-Thos sound *soooo* cool, I want to make them work.
+Those sound *soooo* cool, I want to make them work.
 
 Alas, not yet. 
 

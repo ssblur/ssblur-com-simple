@@ -34,7 +34,7 @@ mixin pico-project(name, ...links)
 mixin project(name, background, links)
     - var href = null
     each item in links
-        if item.includes("ssblur.com")
+        if item.includes("ssblur.com") || item.includes("blur.gay") || item.includes("junihall.com")
             - href = item 
     - var data = (href ? "C:\\PROJ\\" + name.replace(/[^a-zA-Z0-9]/g, '').toUpperCase().substring(0, 7) + "~.TXT" : null)
     .project

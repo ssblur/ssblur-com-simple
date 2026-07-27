@@ -7,16 +7,26 @@ mixin youtube
     a(href='https://www.youtube.com/channel/UC87-8FM-U9OSUYCzIqlhztA' title='YouTube', data-path="YOUTUBE.LNK")
         +icon('social-youtube')
         | YouTube
+        
+mixin twitch 
+    a(href='https://twitch.tv/ssblur' title='Twitch', data-path="TWITCH.LNK")
+        +icon('media-play-outline')
+        | Twitch
 
 mixin discord 
     a(href='https://discord.gg/Uwbtmmb' title='Discord', data-path="DISCORD.LNK")
-        +icon('social-discord')
+        +icon('messages')
         | Discord
 
 mixin tumblr
     a(href='https://ssblur.tumblr.com' title='Tumblr', data-path="TUMBLR.LNK")
         +icon('social-tumbler')
         | Tumblr
+
+mixin bsky
+    a(href='https://bsky.app/user/blur.gay' title='BlueSky', data-path="BSKY.LNK")
+        +icon('social-at-circular')
+        | BlueSky
 
 mixin github
     a(href='https://github.com/ssblur' title='GitHub', data-path="GITHUB.LNK")

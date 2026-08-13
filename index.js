@@ -133,7 +133,9 @@ for(let site of glob.sync('./pages/*/')) {
         
         meta[blog].link = `/blog/${link}.html`
         meta[blog].title ??= blogTitle
-        meta[blog].teaser ??= blogContents.replace(/<.*?>/g, '').substring(0, 280).replace(/&...;/, '').replace(/\s+.*?$/, '') + "..."
+        meta[blog].teaser ??= blogContents.replaceAll(/<.*?>/g, '').substring(0, 280)
+        .replaceAll(/&#39;/, "'")
+        .replaceAll(/\s+.*?$/, '') + "..."
 
         let hash = crypto.createHash('sha1').update(blogContents).digest('base64')
         if((meta[blog].hash ?? hash) != hash) {
